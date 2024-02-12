@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+                 catalog=""  table="provinces" datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id_province</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id_province</Column>
+    </UpdateKeys>
+    <GeneratedKey>id_province</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_community" prefix="c" databaseName="id_community"/>
+                <AmbiguousColumn name="id_province" prefix="p" databaseName="id_province"/>
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>id_province</Column>
+                <Column>province_name</Column>
+                <Column>community_name</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+					SELECT
+						p.id_province,
+                        p.province_name,
+                        c.community_name
+					FROM
+						${mainschema}.provinces p
+					LEFT JOIN ${mainschema}.communities c on
+						p.id_community = c.id_community
+					#WHERE#
+					ORDER BY
+                        LOWER(p.province_name) ASC;
+		         ]]>
+            </Sentence>
+        </Query>
+        <Query id="provincesHosts">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_community" prefix="c" databaseName="id_community"/>
+                <AmbiguousColumn name="id_province" prefix="p" databaseName="id_province"/>
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>id_province</Column>
+                <Column>province_name</Column>
+                <Column>town_count</Column>
+                <Column>host_count</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        p.province_name,
+                        p.id_province,
+                        COUNT(DISTINCT t.id_town) AS town_count,
+                        COUNT(DISTINCT cl.id_client) AS host_count
+                    FROM
+                        ${mainschema}.provinces p
+                    LEFT JOIN ${mainschema}.towns t ON
+                        p.id_province = t.id_province
+                    LEFT JOIN ${mainschema}.clients cl ON
+                        t.id_town = cl.id_town AND cl.host = true
+                    GROUP BY
+                        p.province_name,
+                        p.id_province
+                    HAVING
+                        COUNT(DISTINCT cl.id_client) > 0;
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

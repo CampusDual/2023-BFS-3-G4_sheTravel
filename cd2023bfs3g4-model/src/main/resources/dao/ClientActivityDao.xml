@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="clients_activities"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id_client</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id_client</Column>
+        <Column>id_activity</Column>
+    </UpdateKeys>
+    <Queries>
+        <Query id="default">
+
+            <ValidColumns>
+                <Column>id_client</Column>
+                <Column>id_activity</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+
+                    FROM
+                        ${mainschema}.clients_activities
+
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+
+
+        <Query id="hostclient">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_town" prefix="c" databaseName="id_town" />
+                <AmbiguousColumn name="user_" prefix="c" databaseName="user_" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>user_</Column>
+                <Column>password</Column>
+                <Column>name</Column>
+                <Column>surname</Column>
+                <Column>email</Column>
+                <Column>nif</Column>
+                <Column>userblocked</Column>
+                <Column>lastpasswordupdate</Column>
+                <Column>firstlogin</Column>
+                <Column>phonenumber</Column>
+                <Column>description</Column>
+                <Column>short_desc</Column>
+                <Column>id_town</Column>
+                <Column>host</Column>
+                <Column>town_name</Column>
+                <Column>avatar</Column>
+                <Column>id_client</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                     FROM
+                        ${mainschema}.clients c
+                    LEFT JOIN ${mainschema}.tuser tu on
+						c.user_ = tu.user_
+					LEFT JOIN ${mainschema}.towns t on
+						c.id_town = t.id_town
+                    #WHERE#
+                       AND c.host = true
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="activitiesclient">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_client" prefix="c" databaseName="id_client" />
+                <AmbiguousColumn name="id_activity" prefix="a" databaseName="id_activity" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <!-- columnas comunes a dos o más tablas -->
+                <Column>id_client</Column>
+                <Column>id_activity</Column>
+                <!-- columnas exclusivas de Clients -->
+                <Column>user_</Column>
+                <!-- columnas exclusivas de activities -->
+                <Column>activity_name</Column>
+                <!-- columnas exclusivas de clients_activities -->
+                <Column>id_client_activity</Column>
+
+
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                     FROM
+                     ${mainschema}.clients_activities ca
+                    LEFT JOIN ${mainschema}.clients c on
+						c.id_client = ca.id_client
+					LEFT JOIN ${mainschema}.activities a on
+						a.id_activity = ca.id_activity
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

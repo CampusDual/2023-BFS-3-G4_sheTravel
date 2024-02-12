@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="activities"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+
+        <Column>id_activity</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id_activity</Column>
+    </UpdateKeys>
+    <Queries>
+        <Query id="default">
+
+            <ValidColumns>
+                <Column>activity_name</Column>
+                <Column>id_activity</Column>
+
+
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+
+                    FROM
+                        ${mainschema}.activities
+
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+
+        <Query id="activitycount">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_activity" prefix="c" databaseName="id_activity" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>id_activity</Column>
+                <Column>activity_name</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#, COUNT(c.id_activity) as activitycount
+                    FROM
+                        ${mainschema}.clients_activities c
+                    LEFT JOIN ${mainschema}.activities a
+                    ON a.id_activity = c.id_activity
+                    #WHERE#
+                    GROUP BY c.id_activity, activity_name
+                    ORDER BY activitycount DESC
+                    LIMIT 5;
+                ]]>
+            </Sentence>
+        </Query>
+
+    </Queries>
+</JdbcEntitySetup>

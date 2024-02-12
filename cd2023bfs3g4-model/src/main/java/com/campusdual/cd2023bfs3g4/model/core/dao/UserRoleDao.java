@@ -1,11 +1,10 @@
 package com.campusdual.cd2023bfs3g4.model.core.dao;
 
 
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Repository;
-
 import com.ontimize.jee.server.dao.common.ConfigurationFile;
 import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Repository;
 
 
 @Repository(value = "UserRoleDao")
@@ -14,8 +13,7 @@ import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 	configurationFile = "dao/UserRoleDao.xml",
 	configurationFilePlaceholder = "dao/placeholders.properties")
 public class UserRoleDao extends OntimizeJdbcDaoSupport {
-	public static final String URO_ID       = "uro_id";
-	public static final String USR_ID       = "usr_id";
-	public static final String ROL_ID       = "rol_id";
-	public static final String ACTIVED      = "actived";
+
+
+
 }

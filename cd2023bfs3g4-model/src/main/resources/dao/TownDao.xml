@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+                 catalog=""  table="towns" datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+<DeleteKeys>
+<Column>id_town</Column>
+</DeleteKeys>
+<UpdateKeys>
+<Column>id_town</Column>
+</UpdateKeys>
+<GeneratedKey>id_town</GeneratedKey>
+<Queries>
+        <Query id="default">
+                <AmbiguousColumns>
+                        <AmbiguousColumn name="id_province" prefix="p" databaseName="id_province"/>
+                        <AmbiguousColumn name="id_community" prefix="c" databaseName="id_community"/>
+                        <AmbiguousColumn name="id_town" prefix="t" databaseName="id_town"/>
+                </AmbiguousColumns>
+                <ValidColumns>
+                        <Column>id_town</Column>
+                        <Column>id_community</Column>
+                        <Column>town_name</Column>
+                        <Column>province_name</Column>
+                        <Column>community_name</Column>
+                        <Column>id_province</Column>
+                </ValidColumns>
+                <Sentence>
+                        <![CDATA[
+					SELECT
+						#COLUMNS#, COUNT(cl.id_client) as hostamount
+					FROM
+						${mainschema}.towns t
+					LEFT JOIN ${mainschema}.provinces p on
+						t.id_province = p.id_province
+					LEFT JOIN ${mainschema}.communities c on
+						p.id_community = c.id_community
+					LEFT JOIN ${mainschema}.clients cl on
+						t.id_town = cl.id_town
+					AND cl.host = true
+					#WHERE#
+					GROUP BY t.id_town, p.id_province, c.id_community
+		         ]]>
+                </Sentence>
+        </Query>
+        <Query id="hostcount">
+                <AmbiguousColumns>
+                        <AmbiguousColumn name="id_province" prefix="p" databaseName="id_province"/>
+                        <AmbiguousColumn name="id_community" prefix="c" databaseName="id_community"/>
+                        <AmbiguousColumn name="id_town" prefix="t" databaseName="id_town"/>
+                </AmbiguousColumns>
+                <ValidColumns>
+                        <Column>id_town</Column>
+                        <Column>id_community</Column>
+                        <Column>town_name</Column>
+                        <Column>province_name</Column>
+                        <Column>community_name</Column>
+                        <Column>id_province</Column>
+                </ValidColumns>
+                <Sentence>
+                        <![CDATA[
+					SELECT
+						#COLUMNS#, COUNT(cl.id_client) as hostcount
+					FROM
+						${mainschema}.towns t
+					LEFT JOIN ${mainschema}.provinces p on
+						t.id_province = p.id_province
+					LEFT JOIN ${mainschema}.communities c on
+						p.id_community = c.id_community
+					LEFT JOIN ${mainschema}.clients cl on
+						t.id_town = cl.id_town
+					AND cl.host = true
+					#WHERE#
+					GROUP BY t.id_town, p.id_province, c.id_community
+					ORDER BY hostcount DESC
+                    LIMIT 5;
+		         ]]>
+                </Sentence>
+        </Query>
+</Queries>
+        </JdbcEntitySetup>

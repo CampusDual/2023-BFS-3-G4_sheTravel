@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+                 catalog=""  table="communities" datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id_community</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id_community</Column>
+    </UpdateKeys>
+    <GeneratedKey>id_community</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_province" prefix="p" databaseName="id_province"/>
+                <AmbiguousColumn name="id_community" prefix="c" databaseName="id_community"/>
+                <AmbiguousColumn name="id_town" prefix="t" databaseName="id_town"/>
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>community_name</Column>
+                <Column>id_community</Column>
+                <Column>province_name</Column>
+                <Column>province_count</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        c.community_name,
+                        c.id_community,
+                        COUNT(p.province_name) AS province_count
+                    FROM
+                        ${mainschema}.communities c
+                    LEFT JOIN ${mainschema}.provinces p on
+                        p.id_community = c.id_community
+                    LEFT JOIN ${mainschema}.towns t on
+                        t.id_province = p.id_province
+                    #WHERE#
+                        GROUP BY c.id_community
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>
