@@ -1,0 +1,105 @@
+/* Título de la página */
+.towns-home {
+  margin-top: 20px;
+  width: 100%;
+  padding-left: 10px;
+  display: flex;
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: #341777;
+  margin-bottom: 7px;
+}
+
+/* Estilos para el filtro */
+.filter-style {
+margin-top: 10px;
+background-color: #f4f4f4; 
+border: 1px solid #ccc; 
+border-radius: 20px;
+padding-right: 30px;
+padding-left: 30px;
+margin-bottom: 0;
+}
+
+.buttons-container {
+display: flex;
+justify-content: space-between; /* Espacio entre los elementos */
+align-items: center;
+}
+
+.input-search {
+margin-right: 10px; 
+}
+
+.input-clear {
+background-color: transparent;
+border: none;
+cursor: pointer; 
+}
+
+/* Estilos para el grid */
+o-grid {
+  row-gap: 10px;
+
+}
+
+.no-link-style {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; 
+}
+
+.grid-container { 
+  overflow: hidden;
+}
+
+.container-item {
+  margin-top: 0;
+  display: block;
+  position: absolute;
+  width: 90%;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: auto;
+  overflow: hidden;
+}
+
+.town-image {
+    width: 100%; 
+    max-height: 220px; 
+    object-fit: cover;
+  }
+  
+.town-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 4px 0;
+    text-align: center
+  }
+  
+.province-name {
+    font-size: 0.8em;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    margin-bottom: 6px;
+  }
+
+  .host-amount {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 5px;
+  }

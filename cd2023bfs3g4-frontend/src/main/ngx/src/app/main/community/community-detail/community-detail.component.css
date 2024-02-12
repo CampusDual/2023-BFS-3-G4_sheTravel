@@ -1,0 +1,103 @@
+.community-title {
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #341777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  letter-spacing: 1px;
+  color: rgb(210, 190, 250);
+  margin-bottom: 0;
+}
+
+/* Estilos para el filtro */
+.filter-style {
+  margin-top: 20px;
+  background-color: #f4f4f4; 
+  border: 1px solid #ccc; 
+  border-radius: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center;
+}
+
+.input-search {
+  margin-right: 10px; 
+}
+
+.input-clear {
+  background-color: transparent;
+  border: none;
+  cursor: pointer; 
+}
+
+
+/* Estilos grid */
+o-grid {
+  row-gap: 10px;
+}
+
+.no-link-style {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; 
+}
+
+.container-item {
+  margin-top: 0;
+  display: block;
+  position: absolute;
+  width: 90%;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: auto;
+  /* overflow: hidden; */
+  z-index: 3;
+}
+
+.town-image {
+    width: 100%; 
+    max-height: 220px; 
+    object-fit: cover;
+    
+  }
+  
+  .town-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 4px 0;
+    text-align: center
+  }
+  
+.province-name {
+    font-size: 0.8em;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    margin-bottom: 6px;
+  }
+
+  .host-amount {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 5px;
+  }

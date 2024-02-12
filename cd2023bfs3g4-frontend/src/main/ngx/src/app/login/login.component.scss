@@ -1,5 +1,15 @@
 .m-top-24 {
-  margin-top: 24px;
+  margin-top: 15px;
+  width: 90%;
+}
+
+mat-form-field {
+  width: 90%;
+  margin: 0 auto;
+}
+
+mat-icon {
+  vertical-align: middle;
 }
 
 .full-page {
@@ -8,6 +18,7 @@
   margin: 0 auto;
   position: relative;
   overflow: hidden;
+  display: flex;
 
   .login-outer-container {
     width: 100%;
@@ -22,13 +33,14 @@
     overflow: auto;
 
     .login-bg-container {
-      background-image: url('^assets/images/login_bg.png');
+      background-image: url('^assets/images/foto_login.png');
       width: calc(100% - 640px);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
       position: relative;
       z-index: 1;
+      
     }
 
     .login-bg-container::before {
@@ -44,6 +56,38 @@
       opacity: .8;
     }
 
+    .title-login{
+      text-align: center;
+      width: 70%;
+      padding: 15px 0;
+      color: white;
+    
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+      align-content: center;
+      font-size: 35px;
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+
+    .text-login {
+      margin-top: 0;
+      text-align: center;
+      width: 50%;
+      color: white;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+      align-content: center;
+      font-size: 16px;
+      font-weight: 500;
+      
+    }
+
     .wrapp-login {
       width: 640px;
       min-height: 100%;
@@ -53,32 +97,33 @@
 
         form {
           padding: 16px;
-          min-height: 600px;
+          min-height: 500px;
           min-width: 368px;
         }
 
         .logo-container {
-          width: 368px;
-          height: 110px;
-
-          img {
-            max-height: 110px;
-            max-width: 368px;
-          }
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 20px;
+      
         }
+
+       }
 
         .session-expired {
           text-align: center;
         }
 
         .login-title-container {
-          margin-top: 64px;
+          margin-top: 70px;
         }
 
         button {
           width: 100%;
-          margin: 32px 0 0;
-          height: 42px;
+          margin: 24px 0;
+          height: 40px; /* Aumenta el tamaño de los botones */
           font-size: 16px;
         }
 
@@ -103,6 +148,21 @@
       }
     }
 
+   
+
+  }
+
+  .register-section{
+
+    width: 368px;
+  }
+
+  .register-button{
+    width: 100%;
+    margin: 24px 0;
+    height: 40px; /* Aumenta el tamaño de los botones */
+    font-size: 16px;
+
   }
 
   .footer-container {
@@ -111,22 +171,25 @@
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 40px;
+    height: 50px;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 
     div {
       height: 40px;
-      margin-right: 138px;
+      margin-right: 0px;
 
       span {
-        font-size: 11px;
+        font-size: 12px;
         padding-right: 4px;
       }
     }
 
   }
 
-}
 @media(max-width:576px) {
   .full-page {
     .login-outer-container {
@@ -153,3 +216,4 @@
     }
   }
 }
+

@@ -1,0 +1,26 @@
+<div class="dialog">
+    <p class="title">{{ 'RESERV_DIALOG_MSG' | oTranslate }}</p>
+   
+        <!-- <p>Reserva una fecha y escribe un mensaje a la anfitriona para comprobar su disponibilidad</p> -->
+        
+   
+    <o-form #form show-header="no" show-header-navigation="no" layout-direction="column" service="users" entity="reservation"  (onInsert)="reservationCreated()">
+        <!-- <o-date-input #date attr="date" label="{{ 'RESDATE' | oTranslate }}" read-only="no" required="yes" [min]="today"
+            fxFlex="60"></o-date-input> -->
+            <o-text-input #id_client_host attr="id_client_host" [data] = "getData()" fxFlex="70" required="yes"
+            max-length="200" oHidden></o-text-input>                  
+            <o-text-input #read_host attr="read_host" [data] = "false" fxFlex="70" required="yes"
+            max-length="200" oHidden></o-text-input>      
+            <o-text-input #read_traveler attr="read_traveler" [data] = "true" fxFlex="70" required="yes"
+            max-length="200" oHidden></o-text-input> 
+
+
+        <o-daterange-input #daterange1 attr="daterange1" format="L" label="Date range"  [min]="todayStringWithFormat" fxFlex="70" required="yes"> </o-daterange-input>
+        <o-textarea-input #message attr="message" label="{{ 'RESMESSAGE' | oTranslate }}" fxFlex="70" required="yes"
+            max-length="50" placeholder="{{ 'MESSAGEMAX200CHA' | oTranslate }}"></o-textarea-input>
+       
+        <o-button class="send" type="RAISED" label="SEND" layout-padding color="accent"
+            (onClick)="sendReservation()"></o-button>
+    </o-form>
+    
+</div>

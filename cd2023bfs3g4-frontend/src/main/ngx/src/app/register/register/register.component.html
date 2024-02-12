@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="box">
+    <div class="box1">
+      <p class="text">
+        <span>{{'REGTEXT1' | oTranslate}}</span><br>
+        <span>{{'REGTEXT2' | oTranslate}}</span><br>
+        <span>{{'REGTEXT3' | oTranslate}}</span>
+    </div>
+    <div class="box2">
+      <o-form #formregister [formGroup]="form" service="register" query-on-init="no" entity="register" keys="user_"
+        ignore-on-exit="passwordConfirm" show-header="no" confirm-exit="no" (onInsert)="userCreated()">
+        <o-button [routerLink]="['/login']" type="RAISED" label="BACKBTN" layout-padding color="accent" icon="arrow_back_ios_new"></o-button>
+        <o-text-input attr="name" label="NAME" fxFlex="100" required="yes" max-length="20"></o-text-input>
+        <o-text-input attr="surname" label="SURNAME" fxFlex="100" required="yes" max-length="30"></o-text-input>
+        <o-email-input attr="user_" label="{{ 'Register email' | oTranslate }}" placeholder="example@example.com"
+          fxFlex="100" required="yes"></o-email-input>
+
+        <o-password-input attr="password" label="PASSWORD" fxFlex="100" required="yes" label="PASSWORD"
+          show-password-button="yes" [validators]="validatorsArray" (input)="onPasswordInput()">
+          <o-validator [error-name]="'passwordNotSize'" [error-text]="'ERROR_PASS'"></o-validator>
+        </o-password-input>
+
+        <o-password-input attr="passwordConfirm" fxFlex="100" *ngIf="isPasswordModified"
+          label="{{ 'Confirm password' | oTranslate }}" show-password-button="yes" [validators]="validatorsArray">
+          <o-validator [error-name]="'passwordNotMatched'" [error-text]="'ERROR_MATCH'"></o-validator>
+        </o-password-input>
+          <o-button type="RAISED" label="CREATEBTN" layout-padding color="accent" icon="person_add"
+                    [enabled]="!formregister.invalid" (onClick)="saveUserInDataBase()"></o-button>
+      </o-form>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<div class="container">
+  <div class="text">
+    <p class=" head">Tu viaje empieza aquí!</p>
+    <p class="li">Completa el formulario de registro y únete al club de viajeras</p>
+  </div>
+  <div class="box">
+    <o-form [formGroup]="form" service="register" query-on-init="no" entity="register" keys="user_"
+      ignore-on-exit="passwordConfirm" (onInsert)="goToLogin()">
+      <o-text-input attr="name" label="NAME" fxFlex="100" required="yes" max-length="20"></o-text-input>
+      <o-text-input attr="surname" label="SURNAME" fxFlex="100" required="yes" max-length="30"></o-text-input>
+      <mat-form-field attr="email" fxFlex="100">
+        <input matInput placeholder="{{ 'Register email' | oTranslate }}" formControlName="user_" required="yes">
+        <mat-error *ngIf="form.get('user_').hasError('email')">
+          ¡Introduce un email válido!
+        </mat-error>
+      </mat-form-field>
+
+      <o-password-input attr="password" label="PASSWORD" fxFlex="100" required="yes" label="PASSWORD"
+        show-password-button="yes" [validators]="validatorsArray" (input)="onPasswordInput()">
+        <o-validator [error-name]="'passwordNotSize'" [error-text]="'ERROR_PASS'"></o-validator>
+      </o-password-input>
+
+      <o-password-input attr="passwordConfirm" fxFlex="100" *ngIf="isPasswordModified"
+        label="{{ 'Confirm password' | oTranslate }}" show-password-button="yes" [validators]="validatorsArray">
+        <o-validator [error-name]="'passwordNotMatched'" [error-text]="'ERROR_MATCH'"></o-validator>
+      </o-password-input>
+      <div class="logo">
+        <img src="../../../assets/images/logo200.png" alt="logo" width="100px">
+      </div>
+      <div class="sello">
+        <img src="../../../assets/images/sello.png" alt="sello" width="200px">
+      </div>
+    </o-form>
+  </div>
+</div> -->

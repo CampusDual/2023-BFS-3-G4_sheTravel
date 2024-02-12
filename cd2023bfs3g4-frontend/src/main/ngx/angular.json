@@ -2,40 +2,34 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "cli": {
-    "cache": {
-      "enabled": false
-    },
-    "analytics": false
-  },
   "projects": {
-    "app": {
+    "ontimize-web-ngx-jee-seed": {
       "projectType": "application",
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
-        "build": {
+         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/ontimize-web-ngx-jee-seed",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "./node_modules"
-              ]
-            },
             "assets": [
               "src/favicon.ico",
               "src/assets",
               {
                 "glob": "**/*",
                 "input": "node_modules/ontimize-web-ngx/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ontimize-web-ngx-report/assets",
                 "output": "/assets"
               },
               "src/manifest.webmanifest"
@@ -45,113 +39,28 @@
               "src/assets/css/app.scss",
               "src/styles.scss"
             ],
-            "scripts": [],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true,
-            "allowedCommonJsDependencies": [
-              "dom-to-image",
-              "google-libphonenumber",
-              "moment",
-              "js-sha256",
-              "base64-js"
+            "scripts": [
+              "src/assets/js/domchange.js",
+              "src/assets/js/keyboard.js"
             ]
           },
           "configurations": {
-            "compose": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.compose.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
-            },
-            "local": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.local.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
-            },
             "production": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.production.ts"
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
-            },
-            "staging": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.staging.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -172,30 +81,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "ontimize-web-ngx-jee-seed:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build:production"
-            },
-            "staging": {
-              "browserTarget": "app:build:staging"
-            },
-            "preview": {
-              "browserTarget": "app:build:preview"
-            },
-            "compose": {
-              "browserTarget": "app:build:compose"
-            },
-            "local": {
-              "browserTarget": "app:build:local"
+              "browserTarget": "ontimize-web-ngx-jee-seed:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "ontimize-web-ngx-jee-seed:build"
           }
         },
         "test": {
@@ -233,27 +130,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "app:serve"
+            "devServerTarget": "ontimize-web-ngx-jee-seed:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "app:build:production"
-            },
-            "staging": {
-              "devServerTarget": "app:build:staging"
-            },
-            "preview": {
-              "devServerTarget": "app:build:preview"
-            },
-            "compose": {
-              "devServerTarget": "app:build:compose"
-            },
-            "local": {
-              "devServerTarget": "app:build:local"
+              "devServerTarget": "ontimize-web-ngx-jee-seed:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "app"
+  "defaultProject": "ontimize-web-ngx-jee-seed"
 }

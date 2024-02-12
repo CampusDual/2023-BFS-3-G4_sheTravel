@@ -1,0 +1,97 @@
+.town-title {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #341777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    letter-spacing: 1px;
+    color: rgb(210, 190, 250);
+}
+
+o-grid {
+    row-gap: 10px;
+  }
+
+.grid-container {
+    overflow: hidden;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd; 
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto elevado */
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    width: 100%; /* Ancho fijo */
+    height: 370px; /* Altura fija */
+}
+
+.card-container:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.rounded-image {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.name-surname {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.short_desc {
+    text-align: center;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #555;
+    height: 50px; /* Altura fija para la descripción */
+    font-style: italic;
+}
+
+.chips-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Esto permite que los divs se envuelvan a la siguiente línea si no caben en una sola línea */
+}
+
+.activitiesChip {
+    display: inline-block;
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 5px;
+    background-color: rgb(210, 190, 250);
+    color: #341777;
+    font-size: 10px; /* Ajusta el tamaño de la fuente según sea necesario */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.buttons-container {
+    display: flex;      
+    justify-content: center; 
+    flex-wrap: nowrap;
+    width: 100%; 
+}

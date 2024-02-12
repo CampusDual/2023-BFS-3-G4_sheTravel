@@ -1,0 +1,145 @@
+.box {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    padding: 15px 10px 10px 10px;
+   
+    width: 880px; /* Ancho fijo */
+    height: 605px; /* Altura fija */
+   
+    
+   
+    
+}
+
+.item-scape {
+    color: white;
+    background-color: rgba(69, 58, 169, 0.5);
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-top: -5px;
+    cursor: pointer;
+    
+   
+    
+    
+  
+}
+
+.shortDesc {
+    text-align: center;
+    margin: auto;
+    padding: 0 10px;
+    font-size: 18px;
+    color: #555;
+    font-style: italic;
+}
+
+
+.chips-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Esto permite que los divs se envuelvan a la siguiente línea si no caben en una sola línea */
+}
+
+.activitiesChip {
+    display: inline-block;
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 5px;
+    background-color: rgb(210, 190, 250);
+    color: #341777;
+    font-size: 10px; /* Ajusta el tamaño de la fuente según sea necesario */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.buttons-container {
+    display: flex;      
+    justify-content: center; 
+    flex-wrap: nowrap;
+    width: 100%; 
+}
+
+
+.profile-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hostName {
+    font-size: 35px;
+    font-weight: bold;
+    color: #341777;
+    margin-top: 5px;
+}
+
+.town {
+    margin-top: 2px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #626262;
+    margin-bottom: 20px;
+}
+
+.longDesc {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.activities-chip-list {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    overflow: hidden;
+    width: auto;
+}
+
+.activitiesChip {
+    font-size: 14px;
+    height: auto;
+    line-height: normal;
+    padding: 5px 10px;
+    pointer-events: none;
+    background-color: rgb(226, 212, 252);
+    margin: 1px; 
+}
+
+.activitiesChip:hover {
+    background-color: inherit; 
+}
+
+.button-contact {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Centra el botón en la tarjeta */
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+
+
+
+/* .tape-left {
+    top: -50px;
+    left: -50px;
+}
+
+.tape-right {
+    bottom: -50px;
+    right: -50px; 
+}  */

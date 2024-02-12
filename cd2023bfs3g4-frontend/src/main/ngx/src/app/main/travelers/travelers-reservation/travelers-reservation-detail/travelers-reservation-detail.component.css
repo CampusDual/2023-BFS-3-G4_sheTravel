@@ -1,0 +1,170 @@
+.container {
+    width: 500px;
+    height: 650px;
+    background: url(../../../../../assets/images/fondo_dial.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.item-scape {
+    color: white;
+    background-color: rgb(182, 176, 241, 0.5);
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.boxes {
+    width: 440px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .item-scape {
+        opacity: 0;
+        color: rgb(93, 55, 182);
+    }
+
+    .boxSc-date {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        .item-date {
+            text-align: right;
+        }
+
+        .date1 {
+            font-size: small;
+            color: white;
+            text-align: right;
+        }
+
+        .date2 {
+            font-size: large;
+            font-weight: bold;
+            color: white;
+            text-align: right;
+        }
+    }
+
+    .boxName-msgT {
+        width: 350px;
+        background-color: rgb(223, 221, 245);
+        border-radius: 30px 0px 30px 30px;
+        border: 3px solid white;
+        padding: 15px;
+        margin-bottom: 20px;
+        text-align: right;
+        align-self: flex-end;
+
+        .nameT {
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: rgb(45, 13, 120);
+            text-align: right;
+        }
+
+        .msgT {
+            font-size: small;
+            color: rgb(45, 13, 120);
+            text-align: right;
+        }
+    }
+
+    .boxName-msgH {
+        width: 350px;
+        background-color: white;
+        border-radius: 0px 30px 30px 30px;
+        border: 3px solid rgb(223, 221, 245);
+        align-self: center;
+        padding: 15px;
+        margin-bottom: 20px;
+        align-self: flex-start;
+
+
+        .nameH {
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: rgb(45, 13, 120);
+        }
+
+        .msgH {
+            font-size: small;
+            color: rgb(45, 13, 120);
+        }
+    }
+
+    .backgroundBox{
+        width: 350px;
+        background-color: rgba(165, 132, 242, 0.5);
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        padding: 10px;
+
+        .box-autoResp {
+            width: 300px;
+            font-size: 20px;
+            font-family: 'Patua One', serif;
+            color: white;
+            text-align: center;
+            align-self: center;
+            margin: 10px 0 10px 0;
+        }
+    
+     
+    }
+
+    
+
+}
+
+.boxInfo {
+    font-size: medium;
+    color: white;
+    align-self: center;
+    margin: 0px 0 10px 0;
+   
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 11px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+  
+    o-button{
+        margin: 0 10px;    
+    }
+}
+
+o-textarea-input {
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    resize: none;
+
+}
+.cancel {
+    font-size: 15px;
+    color: white;
+    margin: 10px 0 10px 0; 
+    text-align: center;
+}

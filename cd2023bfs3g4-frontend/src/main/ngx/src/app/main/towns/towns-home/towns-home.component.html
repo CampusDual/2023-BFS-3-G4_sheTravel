@@ -1,0 +1,70 @@
+<o-form #form fxLayout="column" width="auto" show-header="no">
+    
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-flat-button [routerLink]="['../../communities']">
+            <mat-icon>arrow_back_ios_new</mat-icon>
+            {{'BACKBTN' | oTranslate}}
+        </button>
+    </div>
+
+    <h2 class="towns-home">{{'CHOOSEDESTINATIONMSSG' | oTranslate}}</h2>
+    
+        <div class="filter-style" fxLayout="column">
+          <div fxLayout="row wrap" fxLayout="32px" class="buttons-container">
+              <!-- Combo para Provincias -->
+              <!-- <o-combo #provinceCombo attr="provinceCombo" service="provinces" entity="province" keys="id_province" placeholder="province_name"
+                    query-method="query" columns="id_province;province_name;id_town" value-column="province_name" visible-columns="province_name"
+                    read-only="no" fxFlex="35%" sort="ASC" searchable="true" label-visible="false">
+              </o-combo> -->
+              <!-- Combo para Ciudades -->
+              <o-combo #townCombo attr="townCombo" service="towns" entity="town" keys="id_town" placeholder="town_name"
+                            columns="id_town;town_name;id_province" visible-columns="town_name" value-column="town_name"
+                            fxFlex="75%" sort="ASC" searchable="true" query-method="query" label-visible="false">
+              </o-combo>
+              <!-- Para filtrar por provincias y ciudades de esa provincia[query-on-event]="provinceCombo.onValueChange" parent-keys="id_province:provinceCombo[id_province]" -->
+
+              <!--Botones del filtro -->
+              <div class="buttons-container">
+                <o-button attr="filter-button" icon="search" type="STROKED" class="input-search" [oFilterBuilderQuery]="filterBuilder"
+                          fxFlex="5%" color="primary">
+                </o-button>
+                <o-button attr="clear-button" icon="autorenew" type="STROKED" class="input-clear" [oFilterBuilderClear]="filterBuilder"
+                          xFlex="5%" color="primary">
+                </o-button>
+              </div>
+              <!-- oFilterBuilder para el filtrado -->
+              <o-filter-builder #filterBuilder attr="thefilter" filters="provinceCombo;townCombo"
+                                [target]="grid" query-on-change="no" [expression-builder]="createFilter">
+              </o-filter-builder>
+          </div>
+        </div>
+
+        <o-grid #grid columns="id_town;town_name;province_name" service="towns" entity="town" keys="id_town"
+            quick-filter="no" [cols]="5" grid-item-height="2:3" controls="false" refresh-button="false"
+            show-page-size="true" page-size-options="10;15;20" pagination-controls="true" show-buttons-text="no"
+            sortable-columns="town_name" sort-column="town_name" gutter-size="10px" [ngStyle]="{'height':'auto'}" >
+
+            <div class="grid-container">
+                <o-grid-item class="townCard" *ngFor="let list of grid.dataArray">
+                    <o-column class="container-item">
+                        <a [routerLink]="['/main/towns', list.id_town]" class="no-link-style">
+                            <div class="image-container">
+                                <img src="{{ getImagePath(list.town_name) }}" alt="{{ list.town_name }}" class="town-image">
+                                
+                            </div>
+                            <div class="town-data">     
+                                <div class="town-name">{{ list.town_name }}</div>
+                                <div class="province-name">{{ list.province_name }}</div>
+                                <div class="host-amount">
+                                    <span class="material-symbols-outlined">person_pin_circle</span>{{ list.hostamount }}
+                                </div>
+                            </div>
+                        </a>
+                    </o-column>
+                </o-grid-item>
+            </div>
+    </o-grid>
+</o-form>
+
+
+

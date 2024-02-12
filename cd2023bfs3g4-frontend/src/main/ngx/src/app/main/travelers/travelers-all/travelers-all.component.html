@@ -1,0 +1,79 @@
+<o-form service="activities" entity="activity" keys="id_activity" show-header="no">
+    <o-text-input attr="id_activity" sql-type="INTEGER" oHidden></o-text-input>
+    <o-text-input #activitynamefield attr="activity_name" enabled="no" (onValueChange)="reloadValues($event)"
+        oHidden></o-text-input>
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <button mat-flat-button [routerLink]="['/main/home']">
+                <mat-icon>arrow_back_ios_new</mat-icon>
+                {{'BACKBTN' | oTranslate}}
+            </button>
+        </div>
+    
+    <h1 class="activity-title">{{ custom_name }}</h1>
+    
+        <!-- <o-column-collapsible attr="container" title="{{ 'FILTERS_HOSTS' | oTranslate }}"
+        icon="search" elevation="3" appearance="none" expanded="no" layout-align="start stretch">
+        <div class="filter_style" fxLayout="column" fxLayoutGap="14px">
+            <div fxLayout="row wrap" fxLayoutGap="32px">
+                <o-text-input attr="name" read-only="no" fxFlex="calc(25% - 32px)"></o-text-input>
+                <o-text-input attr="surname" read-only="no" fxFlex="calc(25% - 32px)"></o-text-input>
+                <o-combo #type attr="activities" service="activities" entity="activity"
+                    columns="id_activity;activity_name;activities" value-column="activity_name" keys="id_activity"
+                    visible-columns="activity_name" fxFlex="calc(25% - 32px)" sort="ASC" searchable="true"></o-combo>
+
+                <div class="buttons-container">
+                    <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="RAISED" label="Filter"
+                        layout-padding color="primary">
+                    </o-button>
+                    <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="RAISED" label="Clear"
+                        layout-padding color="warm">
+                    </o-button>
+                    <o-filter-builder-menu [oFilterBuilder]="filterBuilder" show-filter-option="no"
+                        show-clear-filter-option="no" layout-padding></o-filter-builder-menu>
+                </div>
+            </div>
+        </div>
+        <o-filter-builder #filterBuilder attr="thefilter" filters="name;surname;activities"
+            [target]="grid" query-on-change="no" [expression-builder]="createFilter"></o-filter-builder>
+        </o-column-collapsible> -->
+
+    <div class="grid-host">
+
+        <o-grid #grid columns="user_;id_client;name;surname;short_desc;avatar;activities;id_activity;town_name" quick-filter="no"
+            service="users" entity="activitiesclient" parent-keys="id_activity" [cols]="5" fixed-header="no"
+            page-size-options="4;8;16" grid-item-height="2:3" refresh-button="false"
+            (onClick)="goToHostDetail($event)">
+
+            <div class="grid-container">
+                <o-grid-item *ngFor="let list of grid.dataArray">
+                    <o-column class="card-container">
+                        <div class="image-container">
+                        <a [routerLink]="['/main/travelers', list.id_client]" class="no-link-style">
+                            <img class="rounded-image" src="data:image/png;base64,{{ list.avatar }}">
+                            <div class="name-surname">
+                                <h2>{{ list.name + ' ' + list.surname }}</h2>
+                            </div>
+                            <div class="town-name">
+                                <span class="material-symbols-outlined">
+                                    location_on
+                                    </span>{{ list.town_name }}
+                            </div>
+                            <div class="chips-container">
+                                <div class="chips-container" fxLayout="row" fxLayoutGap="8px">
+                                    <div class="activitiesChip" *ngFor="let activity of splitActivities(list.activities)">
+                                        {{ activity | oTranslate }}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    </o-column>
+
+                </o-grid-item>
+            </div>
+
+        </o-grid>
+
+    </div>
+</o-form>

@@ -1,3 +1,158 @@
-.bg {
-  background-color: darkred;
+.container {
+  position: relative; /* Permite posicionar elementos hijos relativos a este contenedor */
+  width: 100%; /* Ancho del 100% para ocupar todo el ancho de la pantalla */
+  height: 100%; /* Altura del 100% de la ventana gráfica (viewport height) */
+  overflow: hidden; /* Oculta cualquier contenido que desborde del contenedor */
+}
+
+.home-title {
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 40px;
+  // letter-spacing: 1px;
+  color: #341777;
+}
+
+.steps{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 80%; /* Limita el ancho del logotipo al 80% del contenedor */
+    margin-top: 50px;
+    margin-bottom: 100px;
+    
+}
+
+.top-activities, .top-towns {
+  margin-top: 25px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-weight: bold;
+  font-size: 25px;
+  color: #341777;
+  margin-bottom: 0px;
+}
+
+/* Estilos para el grid top ciudades */
+.no-link-style {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; 
+}
+
+p {
+  margin-top: 0px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.town-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover; 
+}
+
+.link-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.link-container:hover .activities-image {
+  transform: scale(1.1);
+}
+
+.town-data {
+  text-align: center;
+  padding: 10px;
+}
+
+.town-name {
+  font-weight: bold;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  width: 100%;
+}
+
+/* Estilos para el botón host-amount */
+.host-amount {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px 30px; /* Tamaño del botón */
+  background-color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Centra vertical dentro del botón */
+    justify-content: center; /* Centra horizontal dentro del botón */
+    transition: background-color 0.3s ease-in-out;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.host-amount:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+/* Agrega estilos similares para los elementos de la cuadrícula en activitiesGrid */
+.activities-data {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.activities-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover; 
+}
+
+.activity-name {
+  font-weight: bold;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  width: 100%;
 }

@@ -1,0 +1,88 @@
+<div class="container">
+    <o-form #form service="users" entity="reservation" keys="id_reservation" editable-detail="true" show-header="no"
+        show-header-navigation="no" layout-direction="column" (onDataLoaded)="ngOnInit()">
+
+        <div class="item-scape" (click)="closeDialog()"><span class="material-symbols-outlined">cancel</span>
+        </div>
+
+        <div class="boxes">
+            <div class="boxSc-date">
+
+
+                <!-- fecha -->
+                <div clas="item-date">
+                    <div class="date1">{{'Reservation Date' | oTranslate}}</div>
+                    <div class="date2">{{'FROM' | oTranslate}} {{reservation_start | date: 'dd/MM/yyyy'}}
+                        {{'TO' | oTranslate}} {{reservation_end | date: 'dd/MM/yyyy'}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- bocadillo viajera (tu)  -->
+            <div class="boxName-msgT">
+                <div class="nameT">{{name_traveler}} {{'YOUTAG' | oTranslate}}</div>
+                <div class="msgT">{{message}}</div>
+            </div>
+
+            <!-- bocadillo anfitriona(ella) (en todos casos menos 3)--> 
+            <div  class="boxName-msgH" *ngIf="!(id_status == 3)">
+                <div class="nameH">{{name_host}} {{surname_host}}</div><span></span>
+                <div class="msgH">{{message_answer}}</div>
+            </div>
+
+            <!-- bocadillo cancelacion de la host (mensaje de decoro) solo en caso 4 -->
+            <div  class="boxName-msgH" *ngIf="(id_status == 4)">
+               
+                <div class="msgH">{{message_cancellation}}</div>
+            </div>
+
+             <!-- bocadillo cancelacion de la traveler (mensaje de decoro) solo en caso  5-->
+            <div class="boxName-msgT" *ngIf="id_status == 5">
+               
+                <div class="msgT">{{message_cancellation}}</div>
+            </div>
+
+
+            <!-- recuadro moraod d respuesta automatica segun estatus -->
+            <div class="backgroundBox" *ngIf="id_status == 1 || id_status == 2 || id_status == 3 || id_status == 4 || id_status == 5">
+                <div class="box-autoResp">
+                    <div *ngIf="id_status == 1"> {{'Reservation accepted' | oTranslate}}</div>
+                    <div *ngIf="id_status == 2"> {{name_host}} {{'Reservation rejected text' | oTranslate}} </div>
+                    <div *ngIf="id_status == 3">{{name_host}} {{'Reservation delete' | oTranslate}} </div>
+                    <div *ngIf="id_status == 4">{{name_host}} {{'She cancelled the reservation' | oTranslate}} </div>
+                    <div *ngIf="id_status == 5">{{'You cancelled the reservation' | oTranslate}} </div>
+                </div>
+
+                <!-- contactos cuando host ha aceptado -->
+                <div class="infoBox">
+                    <div *ngIf="id_status == 1">
+                        <span>· Tel:</span>
+                        <b>&nbsp;{{phonenumber_host}}</b>
+                    </div>
+                    <div *ngIf="id_status == 1">
+                        <span>· E-mail:</span><b>&nbsp;{{email_host}}</b>
+                    </div>
+                </div>
+            </div>
+
+            <!-- si nos han aceptado, tenemos un texto. si esta pendiente tenemos otro texto -->
+            <div class="answBox">
+                <div *ngIf="id_status == 1">{{'CANCEL?' | oTranslate}} {{name_host}}?</div>
+                <div *ngIf="id_status == 3">{{'DELETE?' | oTranslate}} {{name_host}}?</div>
+            </div>
+
+            <!-- area para explicar cancelacion -->
+            <o-textarea-input *ngIf="id_status == 1" attr="message_cancellation" label="{{'CANCEL_RESP' | oTranslate}}"
+                fxFlex="70" max-length="200" rows="2">
+            </o-textarea-input>
+
+           <!-- botones para cancelar y borrar -->
+            <div class="buttonsBox">
+                <o-button *ngIf="id_status == 1" class="cancel" type="RAISED" label="CANCEL_R" layout-padding
+                    color="primary" (onClick)="cancelReservation(id_reservation)"></o-button>
+                <o-button *ngIf="id_status == 3 || id_status == 4 || id_status == 2" class="deleteReservationButton" type="RAISED" label="DELETE_B"
+                    layout-padding color="primary" (onClick)="deleteReservationFn(id_reservation)"></o-button>
+            </div>
+        </div>
+    </o-form>
+</div>

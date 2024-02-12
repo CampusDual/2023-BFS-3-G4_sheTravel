@@ -1,0 +1,63 @@
+<o-form #form fxLayout="column" show-header="no">
+
+  <h1 class="community-title">{{'Headline in communities' | oTranslate}}</h1>
+
+  <div class="filter-style" fxLayout="column">
+    <div fxLayout="row wrap" fxLayout="32px" class="buttons-container">
+        <!-- Combo para Comunidades -->
+        <o-combo attr=community_name service="communities" entity="community" keys="id_community"
+                columns="id_community;community_name" value-column="community_name" visible-columns="community_name"
+                read-only="no" class="input-combo" fxFlex="75%" sort="ASC" searchable="true"
+                placeholder="community_name" label-visible="false">
+        </o-combo>
+        <!-- Botones del filtro -->
+        <div class="buttons-container">
+          <o-button attr="filter-button" icon="search" type="STROKED" class="input-search" [oFilterBuilderQuery]="filterBuilder"
+                    fxFlex="5%" color="primary">
+          </o-button>
+          <o-button attr="clear-button" icon="autorenew" type="STROKED" class="input-clear" [oFilterBuilderClear]="filterBuilder"
+                    xFlex="5%" color="primary">
+          </o-button>
+        </div>
+        <!-- oFilterBuilder para el filtrado -->
+        <o-filter-builder #filterBuilder attr="thefilter" filters="community_name;province_name;host_available"
+                          [target]="grid" query-on-change="no" [expression-builder]="createFilter">
+        </o-filter-builder>
+
+    </div>
+  </div>
+  
+    <o-grid #grid columns="id_community;community_name;province_name" service="communities" entity="community" keys="id_community"
+      sortable-columns="community_name" sort-column="community_name" quick-filter="no" refresh-button="false" controls="false"
+      [cols]="5" grid-item-height="2:2" pagination-controls="false" show-buttons-text="no" show-page-size="true" 
+      page-size-options="10;15;20" pagination-controls="true" show-buttons-text="no" gutter-size="15px" [ngStyle]="{'height':'auto'}">
+      
+      <div class="grid-container">
+        <o-grid-item *ngFor="let list of grid.dataArray">
+          <o-column>
+            <div class="image">
+              <a routerLink="{{ list.id_community }}">
+                <img [src]="getImagePath(list.community_name)" alt="{{ list.community_name }}" class="community-image">
+              </a>
+            </div>
+            <div class="community-name">{{ list.community_name }}</div>
+          </o-column>
+        </o-grid-item>
+
+        <o-grid-item class="communityCard">
+          <o-column>
+            <div class="image">
+            <a [routerLink]="['/main/towns']" class="no-link-style">
+              <div class="image">
+                <img src="{{ getImageAllComumunity('all_communities') }}" alt="Texto alternativo" class="community-image">
+              </div>
+            <div class="community-name">{{'ALLCITIES' | oTranslate}}</div>
+            </a>
+            </div>
+          </o-column>
+        </o-grid-item>
+      </div>
+
+    </o-grid>
+  
+</o-form>
