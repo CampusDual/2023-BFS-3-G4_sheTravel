@@ -1,14 +1,18 @@
 {
-  "name": "ontimize-web-ngx-jee-seed",
-  "version": "8.4.1",
+  "name": "cd2023bfs3g4",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4299",
+    "start-local": "ng serve --configuration=local --port 4299",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "production": "ng build --prod=true --baseHref=/ontimize-web-ngx-jee-seed/"
+    "compose": "ng build --configuration=compose --base-href=/app/",
+    "local": "ng build --configuration=local --base-href=/app/",
+    "production": "ng build --configuration=production --base-href=/app/",
+    "staging": "ng build --configuration=staging --base-href=/app/"
   },
   "private": true,
   "engines": {
