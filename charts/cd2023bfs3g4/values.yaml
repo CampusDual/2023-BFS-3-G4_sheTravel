@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
   ## provided as basic setup. replace as needed
   repository: ghcr.io/campusdual/2023-bfs-3-g4_shetravel
-  version: pro6f97864
+  version: pro7a7f3db
 imagePullSecrets: 
   - name: "github-ecr-cred" 
 nameOverride: ""
