@@ -11,16 +11,16 @@ import { TravelersReservationComponent } from '../travelers-reservation/traveler
 })
 export class TravelersDetailComponent implements OnInit {
 
-  @ViewChild('form',{static:true}) form:OFormComponent;
+  @ViewChild('form', { static: true }) form: OFormComponent;
   public idtown;
-  
+
   router: Router;
   public arrayActivitiesClient: string[];
 
   constructor(
     router: Router,
     private ontimizeServiceUsers: OntimizeService,
-    protected dialog: MatDialog,) { 
+    protected dialog: MatDialog,) {
     this.router = router;
     this.ontimizeServiceUsers.configureService(this.ontimizeServiceUsers.getDefaultServiceConfiguration('users'));
   }
@@ -28,10 +28,10 @@ export class TravelersDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLoad(){
+  onLoad() {
     let idclient = this.form.getComponents().id_client.getValue();
-    
-    this.ontimizeServiceUsers.query({id_client: idclient}, ['id_activity', 'activity_name'], 'activity_client').subscribe(
+
+    this.ontimizeServiceUsers.query({ id_client: idclient }, ['id_activity', 'activity_name'], 'activity_client').subscribe(
       res => {
         if (res.data && res.data.length) {
           this.arrayActivitiesClient = [];
@@ -39,28 +39,28 @@ export class TravelersDetailComponent implements OnInit {
             this.arrayActivitiesClient.push(element.activity_name);
           });
         }
-      }      
+      }
     );
     this.idtown = this.form.getComponents().id_town.getValue();
-   }
+  }
 
-  public openReservation(data: any): void {    
+  public openReservation(): void {
     let id_client = this.form.getComponents().id_client.getValue();
     this.dialog.open(TravelersReservationComponent, {
-      
+
       height: '520px',
       width: '520px',
       data: {
-        id_client_host: id_client        
+        id_client_host: id_client
       },
     });
   }
 
-/*
-  reservationFn(){   
-    let id_client = this.form.getComponents().id_client.getValue();
-    console.log(id_client);
-    this.router.navigate(["main/travelers/reservation", id_client]);
-  }
-  */
+  /*
+    reservationFn(){   
+      let id_client = this.form.getComponents().id_client.getValue();
+      console.log(id_client);
+      this.router.navigate(["main/travelers/reservation", id_client]);
+    }
+    */
 }

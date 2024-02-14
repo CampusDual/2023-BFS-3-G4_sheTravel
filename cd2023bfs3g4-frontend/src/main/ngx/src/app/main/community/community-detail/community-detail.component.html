@@ -1,30 +1,31 @@
-<o-form #form fxLayout="column" service="communities" entity="community" keys="id_community" show-header="no" (onDataLoaded)="onLoad()">
+<o-form #form fxLayout="column" service="communities" entity="community" keys="id_community" show-header="no">
     <o-text-input attr="id_community" sql-type="INTEGER" enabled="no" oHidden></o-text-input>
     <o-text-input #communitynamefield attr="community_name" enabled="no" (onValueChange)="reloadValues($event)"
         oHidden></o-text-input>
-    
+
     <div fxLayout="row" fxLayoutAlign="start center">
         <button mat-flat-button [routerLink]="['../../communities']">
-                <mat-icon>arrow_back_ios_new</mat-icon>
-                {{'BACKBTN' | oTranslate}}
+            <mat-icon>arrow_back_ios_new</mat-icon>
+            {{'BACKBTN' | oTranslate}}
         </button>
     </div>
 
     <h1 class="community-title">{{ custom_name }}</h1>
 
-    <o-grid #grid columns="id_town;id_community;town_name;province_name" quick-filter-columns="town_name;province_name" fixed-header="no"
-        service="towns" entity="town" keys="id_town" parent-keys="id_community" [cols]="5" grid-item-height="2:3" quick-filter="no" 
-        refresh-button="false" controls="false" show-page-size="false" pagination-controls="true" page-size-options="10;20;40"
-        sortable-columns="town_name" sort-column="town_name" gutter-size="10px" [ngStyle]="{'height':'auto'}" show-footer="no">
+    <o-grid #grid columns="id_town;id_community;town_name;province_name" quick-filter-columns="town_name;province_name"
+        fixed-header="no" service="towns" entity="town" keys="id_town" parent-keys="id_community" [cols]="5"
+        grid-item-height="2:3" quick-filter="no" refresh-button="false" controls="false" show-page-size="false"
+        pagination-controls="true" page-size-options="10;20;40" sortable-columns="town_name" sort-column="town_name"
+        gutter-size="10px" [ngStyle]="{'height':'auto'}" show-footer="no">
 
         <div class="grid-container">
             <o-grid-item class="townCard" *ngFor="let list of grid.dataArray">
                 <o-column class="container-item">
-                    <a [routerLink]="['/main/towns', list.id_town]" class="no-link-style"> 
+                    <a [routerLink]="['/main/towns', list.id_town]" class="no-link-style">
                         <div class="image-container">
                             <img src="{{ getImagePath(list.town_name) }}" alt="{{ list.town_name }}" class="town-image">
                         </div>
-                        <div class="town-data">     
+                        <div class="town-data">
                             <div class="town-name">{{ list.town_name }}</div>
                             <div class="province-name">{{ list.province_name }}</div>
                             <div class="host-amount">
@@ -36,5 +37,5 @@
             </o-grid-item>
         </div>
     </o-grid>
-    
+
 </o-form>

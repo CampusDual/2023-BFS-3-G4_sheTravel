@@ -49,20 +49,19 @@
                     (onClick)="deleteReservationFn(id_reservation)"></o-button>
             </div>
         </div>
-      
+
 
         <div class="cancel" *ngIf="id_status == 1">{{'CANCEL?' | oTranslate}} {{name_traveler}}? </div>
 
         <div class="buttons" *ngIf="id_status == 1">
-            <o-button class="calcelReservationButton" type="RAISED" label="Cancel Reservation" layout-padding color="primary"
-                (onClick)="cancelReservation(id_reservation)"></o-button>
+            <o-button class="calcelReservationButton" type="RAISED" label="Cancel Reservation" layout-padding
+                color="primary" (onClick)="cancelReservation(id_reservation)"></o-button>
         </div>
 
-        <o-textarea-input *ngIf="id_status == 1" attr="message_cancellation"
-                label="{{'CANCEL_RESP' | oTranslate}} " fxFlex="70" 
-                max-length="50" rows="2"></o-textarea-input>
+        <o-textarea-input *ngIf="id_status == 1" attr="message_cancellation" label="{{'CANCEL_RESP' | oTranslate}} "
+            fxFlex="70" max-length="50" rows="2"></o-textarea-input>
 
-        
+
 
 
 

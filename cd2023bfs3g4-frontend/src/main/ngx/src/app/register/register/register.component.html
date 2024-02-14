@@ -9,7 +9,8 @@
     <div class="box2">
       <o-form #formregister [formGroup]="form" service="register" query-on-init="no" entity="register" keys="user_"
         ignore-on-exit="passwordConfirm" show-header="no" confirm-exit="no" (onInsert)="userCreated()">
-        <o-button [routerLink]="['/login']" type="RAISED" label="BACKBTN" layout-padding color="accent" icon="arrow_back_ios_new"></o-button>
+        <o-button [routerLink]="['/login']" type="RAISED" label="BACKBTN" layout-padding color="accent"
+          icon="arrow_back_ios_new"></o-button>
         <o-text-input attr="name" label="NAME" fxFlex="100" required="yes" max-length="20"></o-text-input>
         <o-text-input attr="surname" label="SURNAME" fxFlex="100" required="yes" max-length="30"></o-text-input>
         <o-email-input attr="user_" label="{{ 'Register email' | oTranslate }}" placeholder="example@example.com"
@@ -24,8 +25,8 @@
           label="{{ 'Confirm password' | oTranslate }}" show-password-button="yes" [validators]="validatorsArray">
           <o-validator [error-name]="'passwordNotMatched'" [error-text]="'ERROR_MATCH'"></o-validator>
         </o-password-input>
-          <o-button type="RAISED" label="CREATEBTN" layout-padding color="accent" icon="person_add"
-                    [enabled]="!formregister.invalid" (onClick)="saveUserInDataBase()"></o-button>
+        <o-button type="RAISED" label="CREATEBTN" layout-padding color="accent" icon="person_add" [enabled]="!invalid"
+          (onClick)="saveUserInDataBase()"></o-button>
       </o-form>
     </div>
   </div>

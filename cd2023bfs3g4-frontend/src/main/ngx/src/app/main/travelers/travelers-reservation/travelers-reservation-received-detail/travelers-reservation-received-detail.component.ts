@@ -77,14 +77,14 @@ export class TravelersReservationReceivedDetailComponent implements OnInit {
     let message_answer = this.form.getComponents().message_answer.getValue();
     let id_status = 2;
     let read_traveler = false;
-    
+
     let parent = this;
     this.ontimizeServiceUsers.update({ id_reservation: id_reservation }, { message_answer: message_answer, id_status: id_status, read_traveler: read_traveler }, 'reservation').subscribe(res => {
 
       this.dialog.closeAll();
 
       if (res.code == 0) {
-       
+
         parent.data.grid.reloadData();
         // Mostrar el snack-bar con el mensaje de éxito
         const config: OSnackBarConfig = {
@@ -99,7 +99,7 @@ export class TravelersReservationReceivedDetailComponent implements OnInit {
         this.snackBarService.open(`Error: ${res.message}`, { milliseconds: 5000 });
       }
     });
-    
+
 
   }
 
@@ -135,7 +135,7 @@ export class TravelersReservationReceivedDetailComponent implements OnInit {
     let id_status = 4;
     let read_traveler = false;
     let parent = this;
-    this.ontimizeServiceUsers.update({ id_reservation: id_reservation }, { message_cancellation: message_cancellation, id_status: id_status, read_traveler: read_traveler}, 'reservation').subscribe(res => {
+    this.ontimizeServiceUsers.update({ id_reservation: id_reservation }, { message_cancellation: message_cancellation, id_status: id_status, read_traveler: read_traveler }, 'reservation').subscribe(res => {
 
       this.dialog.closeAll();
 
@@ -154,7 +154,12 @@ export class TravelersReservationReceivedDetailComponent implements OnInit {
         // Mostrar el snack-bar con el mensaje de error
         this.snackBarService.open(`Error: ${res.message}`, { milliseconds: 5000 });
       }
-    });  
+    });
+  }
+
+  public closeDialog() {
+    this.dialog.closeAll()
+
   }
 
 }

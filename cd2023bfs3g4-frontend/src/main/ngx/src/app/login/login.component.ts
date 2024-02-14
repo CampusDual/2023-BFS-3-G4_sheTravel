@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   sessionExpired = false;
-  protected showPassword = false;
+  public showPassword = false;
   router: Router;
 
   loginForm: FormGroup = new FormGroup({});
@@ -82,8 +82,8 @@ export class LoginComponent implements OnInit {
       default: break;
     }
   }
-  
-  registerButtonFn(){
+
+  registerButtonFn() {
     console.log('Botón de registro pulsado');
     this.router.navigate(["/register/new"]);
 

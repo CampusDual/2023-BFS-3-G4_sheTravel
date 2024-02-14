@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   public surname;
   public regemail;
   public password;
+  public invalid = false;
 
   validatorsArray: ValidatorFn[] = []; // Array de validadores personalizados
   isPasswordModified: boolean = false; // Indicador de si la contraseña ha sido modificada
@@ -68,7 +69,7 @@ export class RegisterComponent implements OnInit {
     try {
       const password = control.parent ? control.parent.controls['password'].value : null; // Obtener el valor de la contraseña
       const passwordConfirm = control.value; // Obtener el valor de la confirmación de contraseña
-    return password === passwordConfirm ? null : { passwordNotMatched: true }; // Las contraseñas no coinciden
+      return password === passwordConfirm ? null : { passwordNotMatched: true }; // Las contraseñas no coinciden
     } catch (e) {
       return null;
     }

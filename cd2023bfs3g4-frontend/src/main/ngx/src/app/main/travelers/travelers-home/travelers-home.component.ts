@@ -8,7 +8,7 @@ import { TravelersReservationReceivedDetailComponent } from '../travelers-reserv
 @Component({
   selector: 'app-travelers-home',
   templateUrl: './travelers-home.component.html',
-  styleUrls: ['./travelers-home.component.css']
+  styleUrls: ['./travelers-home.component.scss']
 })
 export class TravelersHomeComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class TravelersHomeComponent implements OnInit {
   //nuevos  ViewChild
   @ViewChild('gridReservationReceived', { static: true }) gridReservationReceived: OGridComponent;
   @ViewChild('gridReservationSent', { static: true }) gridReservationSent: OGridComponent;
-  
+
 
   public arrayActivitiesClient: string[];
   public arrayActivitiesClientNumber: number[];
@@ -143,41 +143,41 @@ export class TravelersHomeComponent implements OnInit {
         this.snackBarService.open(this.translate.get('SNACKACTIVITIES'), config);
       } else {
         // Mostrar el snack-bar con el mensaje de error
-          this.snackBarService.open(`Error: ${res.message}`, { milliseconds: 5000 });
+        this.snackBarService.open(`Error: ${res.message}`, { milliseconds: 5000 });
       }
     });
   }
 
   public verReservaSent(data: any): void {
 
-    let read_traveler = true;    
-    this.ontimizeServiceUsers.update({ id_reservation: data }, { read_traveler:read_traveler }, 'reservation').subscribe(res => {    
-        this.gridReservationReceived.reloadData();
+    let read_traveler = true;
+    this.ontimizeServiceUsers.update({ id_reservation: data }, { read_traveler: read_traveler }, 'reservation').subscribe(res => {
+      this.gridReservationReceived.reloadData();
     });
-     
-   
+
+
     this.dialog.open(TravelersReservationDetailComponent, {
-      
+
       height: '700px',
       width: '550px',
       data: {
         id_reservation: data,
         //nuevo data del grid
         grid: this.gridReservationSent
-        
+
       }
     });
   }
 
-  public verReservaRec(data: any): void {    
-    let read_host = true;    
-    this.ontimizeServiceUsers.update({ id_reservation: data }, { read_host:read_host }, 'reservation').subscribe(res => {    
-        this.gridReservationReceived.reloadData();
+  public verReservaRec(data: any): void {
+    let read_host = true;
+    this.ontimizeServiceUsers.update({ id_reservation: data }, { read_host: read_host }, 'reservation').subscribe(res => {
+      this.gridReservationReceived.reloadData();
     });
-     
-   
+
+
     this.dialog.open(TravelersReservationReceivedDetailComponent, {
-      
+
       height: '700px',
       width: '550px',
       data: {
@@ -187,8 +187,8 @@ export class TravelersHomeComponent implements OnInit {
       },
     });
   }
-   
-  public closeDialog(){
+
+  public closeDialog() {
     this.dialog.closeAll()
 
   }

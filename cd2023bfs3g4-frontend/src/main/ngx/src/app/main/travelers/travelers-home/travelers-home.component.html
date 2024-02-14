@@ -10,19 +10,22 @@
                 <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="25px">
                     <!-- COLUMNA IZQUIERDA: Foto + Datos Perfil-->
                     <o-column fxFlex="35" fxFlex.md="100" class="vertical-margin-10">
-                        <o-column class="profile-photo" title="PROFILE_PHOTO" layout-align="start stretch" fxFlex="95" icon="photo">
+                        <o-column class="profile-photo" title="PROFILE_PHOTO" layout-align="start stretch" fxFlex="95"
+                            icon="photo">
                             <o-image attr="avatar" label="AVATAR" fxFlex="70" width="400px" labeL-visible="no"
                                 empty-image="assets/images/no-image.png" sql-type="OTHERS" height="100%"></o-image>
                         </o-column>
-                        <o-column class="register-data" title="REGISTER_DATA" layout-align="start stretch" fxFlex="95" icon="assignment">
+                        <o-column class="register-data" title="REGISTER_DATA" layout-align="start stretch" fxFlex="95"
+                            icon="assignment">
                             <o-text-input attr="user_" label="USER" fxFlex="100" enabled="no"></o-text-input>
                             <div class="row-pass">
                                 <!-- Campo de entrada de contraseña -->
                                 <o-password-input attr="password" fxFlex="100" required="yes" label="PASSWORD"
-                                    show-password-button="yes" [validators]="validatorsArray" (input)="onPasswordInput()"
-                                    width="160px" class="form-field">
+                                    show-password-button="yes" [validators]="validatorsArray"
+                                    (input)="onPasswordInput()" width="160px" class="form-field">
                                     <!-- Validador para el tamaño de la contraseña -->
-                                    <o-validator [error-name]="'passwordNotSize'" [error-text]="'ERROR_PASS'"></o-validator>
+                                    <o-validator [error-name]="'passwordNotSize'"
+                                        [error-text]="'ERROR_PASS'"></o-validator>
                                 </o-password-input>
                             </div>
                             <div class="row-pass">
@@ -31,60 +34,69 @@
                                     label="{{ 'Confirm password' | oTranslate }}" show-password-button="yes"
                                     [validators]="validatorsArray" width="160px" class="form-field">
                                     <!-- Validador para comprobar que las contraseñas coinciden -->
-                                    <o-validator [error-name]="'passwordNotMatched'" [error-text]="'ERROR_MATCH'"></o-validator>
+                                    <o-validator [error-name]="'passwordNotMatched'"
+                                        [error-text]="'ERROR_MATCH'"></o-validator>
                                 </o-password-input>
                             </div>
                         </o-column>
-                    </o-column>   
+                    </o-column>
 
                     <!-- COLUMNA DERECHA: Datos + actividades -->
-                    <o-column fxFlex="60" fxFlex.md="100" class="vertical-margin-10">    
-                        <o-column class="profile-data" title="PROFILE_DATA" layout-align="start stretch" icon="person_pin">
-                                <o-text-input attr="id_client" oHidden></o-text-input>
-                                <div fxLayout="row" fxLayoutGap="10px">
-                                    <o-text-input attr="name" label="NAME" fxFlex="40" required="yes" max-length="20" class="form-field"></o-text-input>
-                                    <o-text-input attr="surname" label="SURNAME" fxFlex="60" required="yes" max-length="30" class="form-field"></o-text-input>
-                                </div>
+                    <o-column fxFlex="60" fxFlex.md="100" class="vertical-margin-10">
+                        <o-column class="profile-data" title="PROFILE_DATA" layout-align="start stretch"
+                            icon="person_pin">
+                            <o-text-input attr="id_client" oHidden></o-text-input>
+                            <div fxLayout="row" fxLayoutGap="10px">
+                                <o-text-input attr="name" label="NAME" fxFlex="40" required="yes" max-length="20"
+                                    class="form-field"></o-text-input>
+                                <o-text-input attr="surname" label="SURNAME" fxFlex="60" required="yes" max-length="30"
+                                    class="form-field"></o-text-input>
+                            </div>
                             <!-- <div class="shortDesc-container"> -->
-                                <o-text-input class="shortDesc" attr="short_desc" label="SHORTDESC"
+                            <o-text-input class="shortDesc" attr="short_desc" label="SHORTDESC"
                                 placeholder="{{ 'SHORDESC' | oTranslate }}" max-length="120"></o-text-input>
                             <!-- </div> -->
                         </o-column>
-                
-                        <!-- Actividades --> 
-                        <o-column class="activities-data" title="ACTIVITIES"icon="favorite">
-                                <div class="chips-container">
-                                    <div class="activitiesChip" *ngFor="let activity of arrayActivitiesClient">
-                                        {{ activity | oTranslate }}
+
+                        <!-- Actividades -->
+                        <o-column class="activities-data" title="ACTIVITIES" icon="favorite">
+                            <div class="chips-container">
+                                <div class="activitiesChip" *ngFor="let activity of arrayActivitiesClient">
+                                    {{ activity | oTranslate }}
                                 </div>
-                                </div>
+                            </div>
                             <!-- Desplegable actividades -->
-                                <o-column-collapsible class="actselect" title="ACTSELECT" layout-align="start stretch" expanded="no">
-                                    <o-grid class="activitiesGrid" #activitiesB attr="activitiesB" service="activities"
-                                        entity="activity" keys="id_activity" columns="activity_name;id_activity" orderable="true"
-                                        show-page-size="no" quick-filter="false" cols="8" sortable-columns="activity_name"
-                                        detail-mode="none" (onDataLoaded)="onLoad()" pagination-controls="false"
-                                        controls="false" show-footer="no" gutter-size="4px" grid-item-height="55px">
-                                        <!-- Grid seleccionar actividades -->
-                                        <o-grid-item *ngFor="let item of activitiesB.dataArray">
-                                            <div class="activitiesButton-container" fxLayout="column" fxLayoutAlign="space-evenly center">
-                                                <o-button class="activitiesButton"
-                                                    *ngIf="arrayActivitiesClient.includes(item.activity_name)" type="STROKED"
-                                                    label="{{ item.activity_name }}" layout-padding color="primary"
-                                                    (onClick)="removeActivityFn(item.activity_name,item.id_activity)"></o-button>
-                                                <o-button class="activitiesButton"
-                                                    *ngIf="!arrayActivitiesClient.includes(item.activity_name)" type="STROKED"
-                                                    label="{{ item.activity_name }}" layout-padding color="accent"
-                                                    (onClick)="addActivityFn(item.activity_name,item.id_activity)"></o-button>
-                                            </div>
-                                        </o-grid-item>
-                                    </o-grid>
-                                    <!-- Botón guardar actividades -->
-                                    <div fxLayout="column" fxLayoutAlign="space-evenly center">
-                                        <o-button type="RAISED" label="SAVEACT" layout-padding color="accent"
-                                            (onClick)="saveActivitiesInDataBase($event)"></o-button>
-                                    </div>
-                                </o-column-collapsible>
+                            <o-column-collapsible class="actselect" title="ACTSELECT" layout-align="start stretch"
+                                expanded="no">
+                                <o-grid class="activitiesGrid" #activitiesB attr="activitiesB" service="activities"
+                                    entity="activity" keys="id_activity" columns="activity_name;id_activity"
+                                    orderable="true" show-page-size="no" quick-filter="false" cols="8"
+                                    sortable-columns="activity_name" detail-mode="none" (onDataLoaded)="onLoad()"
+                                    pagination-controls="false" controls="false" show-footer="no" gutter-size="4px"
+                                    grid-item-height="55px">
+                                    <!-- Grid seleccionar actividades -->
+                                    <o-grid-item *ngFor="let item of activitiesB.dataArray">
+                                        <div class="activitiesButton-container" fxLayout="column"
+                                            fxLayoutAlign="space-evenly center">
+                                            <o-button class="activitiesButton"
+                                                *ngIf="arrayActivitiesClient.includes(item.activity_name)"
+                                                type="STROKED" label="{{ item.activity_name }}" layout-padding
+                                                color="primary"
+                                                (onClick)="removeActivityFn(item.activity_name,item.id_activity)"></o-button>
+                                            <o-button class="activitiesButton"
+                                                *ngIf="!arrayActivitiesClient.includes(item.activity_name)"
+                                                type="STROKED" label="{{ item.activity_name }}" layout-padding
+                                                color="accent"
+                                                (onClick)="addActivityFn(item.activity_name,item.id_activity)"></o-button>
+                                        </div>
+                                    </o-grid-item>
+                                </o-grid>
+                                <!-- Botón guardar actividades -->
+                                <div fxLayout="column" fxLayoutAlign="space-evenly center">
+                                    <o-button type="RAISED" label="SAVEACT" layout-padding color="accent"
+                                        (onClick)="saveActivitiesInDataBase()"></o-button>
+                                </div>
+                            </o-column-collapsible>
                         </o-column>
                     </o-column>
                 </div>
@@ -101,23 +113,25 @@
                     <o-combo attr="id_town" fxFlex="100" label="TOWN" service="towns" entity="town" keys="id_town"
                         columns="town_name;id_town" visible-columns="town_name" value-column="id_town"
                         class="input-padding" required="yes" sort="ASC" searchable="true"></o-combo>
-                        <o-row class="mailciudades">{{ 'CITIESMAIL' | oTranslate }}</o-row>
-                    <o-textarea-input class="host_desc" attr="description" label="DESCRIPTIONHOST" placeholder="{{ 'LONGDESC' | oTranslate }}"
-                        fxFlex="100" required="yes" max-length="1000"></o-textarea-input>
+                    <o-row class="mailciudades">{{ 'CITIESMAIL' | oTranslate }}</o-row>
+                    <o-textarea-input class="host_desc" attr="description" label="DESCRIPTIONHOST"
+                        placeholder="{{ 'LONGDESC' | oTranslate }}" fxFlex="100" required="yes"
+                        max-length="1000"></o-textarea-input>
                     <o-text-input attr="phonenumber" label="PHONENUMBERCONT" fxFlex="100" required="yes"
                         max-length="15"></o-text-input>
                     <o-email-input attr="email" label="EMAILCONT" placeholder="example@example.com" fxFlex="100"
                         required="yes"></o-email-input>
-                    
+
                 </o-column>
-                <o-column class="host_available" title="HOST_AVAILABLE" layout-align="start stretch" fxFlex="100" icon="check">
+                <o-column class="host_available" title="HOST_AVAILABLE" layout-align="start stretch" fxFlex="100"
+                    icon="check">
                     <o-slide-toggle attr="host" label="ACTIVEHOST" (onChange)="toggleHost($event)"
                         fxFlex="100"></o-slide-toggle>
                 </o-column>
             </o-form>
         </mat-tab>
 
-    
+
     </mat-tab-group>
 
 </o-form-container>
