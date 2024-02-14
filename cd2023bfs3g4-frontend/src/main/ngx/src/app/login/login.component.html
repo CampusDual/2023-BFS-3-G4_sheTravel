@@ -2,8 +2,8 @@
   <div class="login-outer-container">
 
     <div class="login-bg-container" fxLayout="column">
-      <h1 class="title-login" >{{'WELLCOME' | oTranslate}}</h1>
-      <p class="text-login" >{{'WELLCOME1' | oTranslate}}</p>
+      <h1 class="title-login">{{'WELLCOME' | oTranslate}}</h1>
+      <p class="text-login">{{'WELLCOME1' | oTranslate}}</p>
     </div>
 
     <div class="wrapp-login">
@@ -11,9 +11,9 @@
         <form [formGroup]="loginForm" (ngSubmit)="login()">
 
           <!-- Logo -->
-        <div class="logo-container">
-          <img src="../../assets/images/logo300.png" alt="Logo" width="280px">
-        </div>
+          <div class="logo-container">
+            <img src="/assets/images/logo300.png" alt="Logo" width="280px">
+          </div>
 
           <div class="login-title-container" fxLayout="column">
             <p class="session-expired text" *ngIf="sessionExpired">{{ 'ERROR_SESSION_EXPIRED' | oTranslate }}</p>
@@ -22,20 +22,22 @@
 
           <div fxLayout="column" fxLayoutGap="10px">
             <mat-form-field fxFill class="m-top-24">
-              <input matInput class="mat-input" #user placeholder="{{ 'EMAIL' | oTranslate }}" id="email" [formControl]="userCtrl" fxFlex="98">
+              <input matInput class="mat-input" #user placeholder="{{ 'EMAIL' | oTranslate }}" id="email"
+                [formControl]="userCtrl" fxFlex="98">
               <mat-icon matSuffix class="icon">email</mat-icon>
               <mat-error *ngIf="userCtrl.hasError('required')">
                 {{ 'ERROR_EMAIL_REQUIRED' | oTranslate }}
               </mat-error>
             </mat-form-field>
             <mat-form-field fxFill class="m-top-24">
-              <input matInput #password type="password" class="mat-input" placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" [formControl]="pwdCtrl"
-                    [type]="showPassword ? 'text' : 'password'" minlength="8" fxFlex="98">
+              <input matInput #password type="password" class="mat-input" placeholder="{{ 'PASSWORD' | oTranslate }}"
+                id="password" [formControl]="pwdCtrl" [type]="showPassword ? 'text' : 'password'" minlength="8"
+                fxFlex="98">
               <mat-icon matSuffix class="icon-button login-input" (click)="togglePasswordVisibility()">
-                      {{ showPassword ? 'visibility' : 'visibility_off' }}
-                    </mat-icon>
+                {{ showPassword ? 'visibility' : 'visibility_off' }}
+              </mat-icon>
               <mat-error *ngIf="pwdCtrl.hasError('required')">
-                  {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
+                {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
               </mat-error>
             </mat-form-field>
           </div>
@@ -43,7 +45,7 @@
             <mat-checkbox class="text">{{ 'REMEMBER_ME' | oTranslate }}</mat-checkbox>
           </div> -->
 
-         
+
           <div>
             <button mat-raised-button color="primary" type="submit">{{ 'LOGIN' | oTranslate }}</button>
           </div>
@@ -55,14 +57,15 @@
               </div> -->
           <p></p>
 
-           
 
-          </form>
 
-          <div class="register-section" fxLayout="column" fxLayoutAlign="center center">
-            <span class="register-prompt">{{ 'Are you not registered yet?' | oTranslate }}</span>
-            <button mat-raised-button  color="primary" (click)="registerButtonFn()">{{ 'REGISTER NOW' | oTranslate }}</button>
-          </div>
+        </form>
+
+        <div class="register-section" fxLayout="column" fxLayoutAlign="center center">
+          <span class="register-prompt">{{ 'Are you not registered yet?' | oTranslate }}</span>
+          <button mat-raised-button color="primary" (click)="registerButtonFn()">{{ 'REGISTER NOW' | oTranslate
+            }}</button>
+        </div>
 
       </div>
 
@@ -73,7 +76,7 @@
     <div fxLayout="row" fxLayoutAlign="end center">
       <span>{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
       <span>
-        <img src="../../assets/icons/iconFooter.png" alt="icon" width="18px">
+        <img src="/assets/icons/iconFooter.png" alt="icon" width="18px">
       </span>
       <span> &copy; 2023 </span>
       <span>{{ 'FOOTER_RIGHTS' | oTranslate }}</span>
