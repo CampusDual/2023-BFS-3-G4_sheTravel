@@ -2,6 +2,12 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "cli": {
+    "cache": {
+      "enabled": false
+    },
+    "analytics": false
+  },
   "projects": {
     "app": {
       "projectType": "application",
@@ -19,17 +25,17 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./node_modules"
+              ]
+            },
             "assets": [
               "src/favicon.ico",
               "src/assets",
               {
                 "glob": "**/*",
                 "input": "node_modules/ontimize-web-ngx/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/ontimize-web-ngx-report/assets",
                 "output": "/assets"
               },
               "src/manifest.webmanifest"
@@ -39,10 +45,13 @@
               "src/assets/css/app.scss",
               "src/styles.scss"
             ],
-            "scripts": [
-              "src/assets/js/domchange.js",
-              "src/assets/js/keyboard.js"
-            ]
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "compose": {
