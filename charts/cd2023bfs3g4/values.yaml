@@ -5,8 +5,8 @@ replicaCount: 1
 image:
   pullPolicy: IfNotPresent
   ## provided as basic setup. replace as needed
-  repository: ghcr.io/campusdual/cd2023-bfs-3-g4
-  version: pro6b41767
+  repository: ghcr.io/campusdual/2023-bfs-3-g4_shetravel
+  version: prodb19f8d
 imagePullSecrets: 
   - name: "github-ecr-cred" 
 nameOverride: ""
