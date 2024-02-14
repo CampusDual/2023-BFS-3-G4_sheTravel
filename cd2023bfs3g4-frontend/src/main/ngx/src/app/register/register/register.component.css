@@ -71,7 +71,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  background-image: url(assets/images/sheTravel_register.png);
+  background-image: url(../../../assets/images/sheTravel_register.png);
   background-repeat: no-repeat;
   background-position: center;
 }

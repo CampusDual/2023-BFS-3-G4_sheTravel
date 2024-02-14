@@ -1,7 +1,7 @@
 .dialog {
   display: flex;
   flex-direction: column;
-  background: url(assets/images/dialog_profile.png);
+  background: url(../../../../assets/images/dialog_profile.png);
 }
 .text1 {
   color: rgb(29, 5, 99);
