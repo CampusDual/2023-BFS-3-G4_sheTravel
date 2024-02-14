@@ -1,31 +1,35 @@
 <div class="container-home">
-  <!-- <img class="background" src="../../../assets/images/foto_home.jpg">
-  <img class=logo src="../../../assets/images/logo300.png" alt="logo"> -->
-  
-  <h1 class="home-title">Tu próxima aventura empieza hoy</h1>
+    <!-- <img class="background" src="assets/images/foto_home.jpg">
+  <img class=logo src="assets/images/logo300.png" alt="logo"> -->
 
-  <div class="img-steps">
-    <img class="steps" src="../../../assets/images/steps.png" alt="steps">
-  </div>
+    <h1 class="home-title">Tu próxima aventura empieza hoy</h1>
+
+    <div class="img-steps">
+        <img class="steps" src="assets/images/steps.png" alt="steps">
+    </div>
 
     <div>
         <h2 class="top-towns">Ciudades con más anfitrionas</h2>
-        <p>¿Aún no te decides? Visita los destinos con más anfitrionas para ver la enorme variedad que te está esperando</p>
-        <o-grid #grid columns="id_town;town_name;province_name" quick-filter="no" fixed-header="no"
-            service="towns" entity="hostcount" keys="id_town" [cols]="5" controls="false"
-            refresh-button="false" show-page-size="true" pagination-controls="true" show-buttons-text="no"
-            gutter-size="10px" show-footer="no" grid-item-height="2:2">
+        <p>¿Aún no te decides? Visita los destinos con más anfitrionas para ver la enorme variedad que te está esperando
+        </p>
+        <o-grid #grid columns="id_town;town_name;province_name" quick-filter="no" fixed-header="no" service="towns"
+            entity="hostcount" keys="id_town" [cols]="5" controls="false" refresh-button="false" show-page-size="true"
+            pagination-controls="true" show-buttons-text="no" gutter-size="10px" show-footer="no"
+            grid-item-height="2:2">
 
             <div class="grid-container">
                 <o-grid-item class="townCard" *ngFor="let list of grid.dataArray">
                     <o-column class="container-item">
-                        <div class="link-container">   
+                        <div class="link-container">
                             <a [routerLink]="['/main/towns', list.id_town]" class="no-link-style">
-                                <img src="{{ getImagePath(list.town_name) }}" alt="{{ list.town_name }}" class="town-image">
-                                <div class="town-data">     
+                                <img src="{{ getImagePath(list.town_name) }}" alt="{{ list.town_name }}"
+                                    class="town-image">
+                                <div class="town-data">
                                     <div class="town-name">{{ list.town_name }}</div>
-                                    <button class="host-amount" type="STROKED" label="Primary" layout-padding color="primary">
-                                        <span class="material-symbols-outlined">person_pin_circle</span>{{ list.hostcount }}
+                                    <button class="host-amount" type="STROKED" label="Primary" layout-padding
+                                        color="primary">
+                                        <span class="material-symbols-outlined">person_pin_circle</span>{{
+                                        list.hostcount }}
                                     </button>
                                 </div>
                             </a>
@@ -40,22 +44,25 @@
     <div>
         <h2 class="top-activities">Intereses populares</h2>
         <p>Échale un vistazo a las actividades más seleccionadas por nuestras anfitrionas</p>
-        <o-grid class="activitiesGrid" #activitiesB attr="activitiesB" service="activities"
-            entity="activitycount" keys="id_activity" columns="activity_name;id_activity;host_activity" orderable="true"
-            show-page-size="no" quick-filter="false" cols="5" sortable-columns="activity_name" 
-            detail-mode="none" pagination-controls="false" controls="false" show-footer="no" gutter-size="10px">
+        <o-grid class="activitiesGrid" #activitiesB attr="activitiesB" service="activities" entity="activitycount"
+            keys="id_activity" columns="activity_name;id_activity;host_activity" orderable="true" show-page-size="no"
+            quick-filter="false" cols="5" sortable-columns="activity_name" detail-mode="none"
+            pagination-controls="false" controls="false" show-footer="no" gutter-size="10px">
             <div class="activities-container">
                 <o-grid-item *ngFor="let item of activitiesB.dataArray">
                     <o-column class="activities-row">
                         <div class="activities-data">
                             <a [routerLink]="['/main/travelers/all', item.id_activity]" class="no-link-style">
-                            <div>
-                                <img src="{{ getImageActivity(item.activity_name) }}" alt="{{ item.activity_name }}" class="activities-image">
-                            </div>
-                            <div class="activity-name">{{ item.activity_name }}</div>
-                            <button class="host-amount" type="STROKED" label="Primary" layout-padding color="primary">
-                                <span class="material-symbols-outlined">person_pin_circle</span>{{ item.activitycount }}
-                            </button>
+                                <div>
+                                    <img src="{{ getImageActivity(item.activity_name) }}" alt="{{ item.activity_name }}"
+                                        class="activities-image">
+                                </div>
+                                <div class="activity-name">{{ item.activity_name }}</div>
+                                <button class="host-amount" type="STROKED" label="Primary" layout-padding
+                                    color="primary">
+                                    <span class="material-symbols-outlined">person_pin_circle</span>{{
+                                    item.activitycount }}
+                                </button>
                             </a>
                         </div>
                     </o-column>

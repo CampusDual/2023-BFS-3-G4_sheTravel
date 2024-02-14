@@ -1,163 +1,149 @@
 .container {
-    width: 500px;
-    height: 700px;
-    background: url(../../../../../assets/images/fondo_dial.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+  width: 500px;
+  height: 700px;
+  background: url(assets/images/fondo_dial.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-scape {
-    color: white;
-    background-color: rgb(182, 176, 241, 0.5);
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    margin-left: auto;
-    cursor: pointer;
+  color: white;
+  background-color: rgb(182, 176, 241, 0.5);
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-left: auto;
+  cursor: pointer;
 }
 
 .boxes {
-    width: 440px;
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  .boxSc-date {
     display: flex;
-    flex-direction: column;
     margin-bottom: 20px;
 
-
-
-    .boxSc-date {
-        display: flex;
-        margin-bottom: 20px;
-       
-        .date1 {
-            font-size: small;
-            color: white;          
-        }
-
-        .date2 {
-            font-size: medium;
-            font-weight: bold;
-            color: white;
-            
-        }
+    .date1 {
+      font-size: small;
+      color: white;
     }
 
-    .boxName-msgT {
-        width: 350px;
-        background-color: rgb(223, 221, 245);
-        border-radius: 15px 0px 15px 15px;
-        border: 3px solid white;
-        padding: 8px;
-        margin-bottom: 20px;
-        text-align: right;
-        align-self: flex-end;
+    .date2 {
+      font-size: medium;
+      font-weight: bold;
+      color: white;
+    }
+  }
 
-        .nameT {
-            font-size: 15px;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: rgb(45, 13, 120);
-        }
+  .boxName-msgT {
+    width: 350px;
+    background-color: rgb(223, 221, 245);
+    border-radius: 15px 0px 15px 15px;
+    border: 3px solid white;
+    padding: 8px;
+    margin-bottom: 20px;
+    text-align: right;
+    align-self: flex-end;
 
-        .msgT {
-            font-size: small;
-            color: rgb(45, 13, 120);
-        }
+    .nameT {
+      font-size: 15px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: rgb(45, 13, 120);
     }
 
-    .boxName-msgH {
-        width: 350px;
-        background-color: white;
-        border-radius: 0px 15px 15px 15px;
-        border: 3px solid rgb(223, 221, 245);
-        align-self: center;
-        padding: 8px;
-        margin-bottom: 20px;
-        align-self: flex-start;
+    .msgT {
+      font-size: small;
+      color: rgb(45, 13, 120);
+    }
+  }
 
+  .boxName-msgH {
+    width: 350px;
+    background-color: white;
+    border-radius: 0px 15px 15px 15px;
+    border: 3px solid rgb(223, 221, 245);
+    align-self: center;
+    padding: 8px;
+    margin-bottom: 20px;
+    align-self: flex-start;
 
-        .nameH {
-            font-size: 15px;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: rgb(45, 13, 120);
-        }
-
-        .msgH {
-            font-size: small;
-            color: rgb(45, 13, 120);
-        }
+    .nameH {
+      font-size: 15px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: rgb(45, 13, 120);
     }
 
-    .backgroundBox{
-        width: 350px;
-        background-color: rgba(165, 132, 242, 0.5);
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-        padding: 10px;
+    .msgH {
+      font-size: small;
+      color: rgb(45, 13, 120);
+    }
+  }
 
-        .box-autoResp {
-            width: 300px;
-            font-size: 18px;
-            font-family: 'Patua One', serif;
-            color: white;
-            text-align: center;
-            align-self: center;
-            margin: 10px 0 10px 0;
-        }
-    
-        .infoBox {
-            font-size: medium;
-            color: white;
-            align-self: center;
-            margin: 0px 0 10px 0;
-           
-        }
+  .backgroundBox {
+    width: 350px;
+    background-color: rgba(165, 132, 242, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: 10px;
+
+    .box-autoResp {
+      width: 300px;
+      font-size: 18px;
+      font-family: "Patua One", serif;
+      color: white;
+      text-align: center;
+      align-self: center;
+      margin: 10px 0 10px 0;
     }
 
-    .answBox {
-        display: flex;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        font-size: 15px;
-        color: white;
-        margin: 15px 0 0 0; 
+    .infoBox {
+      font-size: medium;
+      color: white;
+      align-self: center;
+      margin: 0px 0 10px 0;
     }
+  }
 
+  .answBox {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: white;
+    margin: 15px 0 0 0;
+  }
 
+  .buttonsBox {
+    text-align: center;
+    margin-top: 11px;
 
-
-    .buttonsBox {
-        text-align: center;
-        margin-top: 11px;
-
-    o-button{
-        margin: 0 10px;
+    o-button {
+      margin: 0 10px;
     }
-
-    }
+  }
 }
 
 o-textarea-input {
-    margin-top: 20px;
-    background-color: white;
-    border-radius: 10px;
-    padding: 10px;
-    resize: none;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  resize: none;
 }
-
-
-
-

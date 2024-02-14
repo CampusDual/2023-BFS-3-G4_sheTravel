@@ -8,9 +8,11 @@
             grid-item-height="60px" gutter-size="6px" show-footer="no">
 
 
-        <o-grid-item>
-            <div class="head_t">
-                <o-row class="title"><span class="rec">{{'RECEIVED_R' | oTranslate}}</span>  &nbsp; <span class="rec1">{{'RECEIVED_R1' | oTranslate}}</span> &nbsp; &nbsp;<span class="rec2">{{'RECEIVED_R2' | oTranslate}}</span> </o-row>
+            <o-grid-item>
+                <div class="head_t">
+                    <o-row class="title"><span class="rec">{{'RECEIVED_R' | oTranslate}}</span> &nbsp; <span
+                            class="rec1">{{'RECEIVED_R1' | oTranslate}}</span> &nbsp; &nbsp;<span
+                            class="rec2">{{'RECEIVED_R2' | oTranslate}}</span> </o-row>
 
                 </div>
             </o-grid-item>
@@ -26,12 +28,12 @@
                         <div class="itemrow1">
                             <div>{{'Chat with' | oTranslate}} <span class="nameT">{{ list.name_traveler}}
                                     {{list.surname_traveler}}</span> </div>
-                                <div class="msg" *ngIf="list.id_status == 3">{{ list.message }}</div>
-                                <div class="msg" *ngIf="list.id_status == 1">{{ list.message_answer }}</div>
+                            <div class="msg" *ngIf="list.id_status == 3">{{ list.message }}</div>
+                            <div class="msg" *ngIf="list.id_status == 1">{{ list.message_answer }}</div>
                             <div class="msg" *ngIf="list.id_status == 2">{{ list.message_answer }}</div>
                             <div class="msg" *ngIf="list.id_status == 4">{{ list.message_cancellation }}</div>
                             <div class="msg" *ngIf="list.id_status == 5">{{ list.message_cancellation }}</div>
-                    </div>
+                        </div>
 
                         <div class="itemrow2">
                             <div class="date">{{'Reservation Date' | oTranslate}}</div>
@@ -56,10 +58,10 @@
                         </div>
                         <div class="itemrow4">
                             <!-- <div class="readStatus">{{'status_name' | oTranslate}}</div> -->
-                            <div class="read" *ngIf="list.read_host === true"><img
-                                    src="../../../../assets/icons/read.png" alt="r"></div>
-                            <div class="read" *ngIf="list.read_host === false"><img
-                                    src="../../../../assets/icons/unread.png" alt="u"></div>
+                            <div class="read" *ngIf="list.read_host === true"><img src="assets/icons/read.png" alt="r">
+                            </div>
+                            <div class="read" *ngIf="list.read_host === false"><img src="assets/icons/unread.png"
+                                    alt="u"></div>
                         </div>
 
 
@@ -93,7 +95,9 @@
             <o-grid-item>
                 <div class="head_t">
 
-                    <o-row class="title"><span class="rec">{{'SENT_R' | oTranslate}}</span> &nbsp; <span class="rec1">{{'SENT_R1' | oTranslate}}</span>&nbsp; &nbsp;<span class="rec2">{{'SENT_R2' | oTranslate}}</span></o-row>
+                    <o-row class="title"><span class="rec">{{'SENT_R' | oTranslate}}</span> &nbsp; <span
+                            class="rec1">{{'SENT_R1' | oTranslate}}</span>&nbsp; &nbsp;<span class="rec2">{{'SENT_R2' |
+                            oTranslate}}</span></o-row>
                 </div>
             </o-grid-item>
 
@@ -107,12 +111,12 @@
                         <div class="itemrow1">
                             <div>{{'Chat with' | oTranslate}} <span class="nameT">{{ list.name_host}}
                                     {{list.surname_host}}</span> </div>
-                                <div class="msg" *ngIf="list.id_status == 3">{{ list.message }}</div>
-                                <div class="msg" *ngIf="list.id_status == 1">{{ list.message_answer }}</div>
+                            <div class="msg" *ngIf="list.id_status == 3">{{ list.message }}</div>
+                            <div class="msg" *ngIf="list.id_status == 1">{{ list.message_answer }}</div>
                             <div class="msg" *ngIf="list.id_status == 2">{{ list.message_answer }}</div>
                             <div class="msg" *ngIf="list.id_status == 4">{{ list.message_cancellation }}</div>
                             <div class="msg" *ngIf="list.id_status == 5">{{ list.message_cancellation }}</div>
-                    </div>
+                        </div>
 
                         <div class="itemrow2">
                             <div class="date">{{'Reservation Date' | oTranslate}}</div>
@@ -137,10 +141,10 @@
                         </div>
                         <div class="itemrow4">
                             <!-- <div class="readStatus">{{'status_name' | oTranslate}}</div> -->
-                            <div class="read" *ngIf="list.read_traveler === true"><img
-                                    src="../../../../assets/icons/read.png" alt="r"></div>
-                            <div class="read" *ngIf="list.read_traveler === false"><img
-                                    src="../../../../assets/icons/unread.png" alt="u"></div>
+                            <div class="read" *ngIf="list.read_traveler === true"><img src="assets/icons/read.png"
+                                    alt="r"></div>
+                            <div class="read" *ngIf="list.read_traveler === false"><img src="assets/icons/unread.png"
+                                    alt="u"></div>
                         </div>
 
                     </div>
@@ -151,7 +155,7 @@
                 </div>
             </o-grid-item>
         </o-grid>
-</div>
+    </div>
 
 
 
