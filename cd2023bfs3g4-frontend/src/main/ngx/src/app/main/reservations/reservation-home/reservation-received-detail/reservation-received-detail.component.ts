@@ -7,7 +7,7 @@ import { OFormComponent, OSnackBarConfig, OntimizeService, SnackBarService } fro
 @Component({
   selector: 'app-reservation-received-detail',
   templateUrl: './reservation-received-detail.component.html',
-  styleUrls: ['./reservation-received-detail.component.css']
+  styleUrls: ['./reservation-received-detail.component.scss']
 })
 export class ReservationReceivedDetailComponent implements OnInit {
 
@@ -72,7 +72,7 @@ export class ReservationReceivedDetailComponent implements OnInit {
           this.read_traveler = res.data[0].read_traveler;
           this.read_host = res.data[0].read_host;
           this.reservation_start = res.data[0].reservation_start;
-          this.reservation_end = res.data [0].reservation_end;
+          this.reservation_end = res.data[0].reservation_end;
 
         }
       );
@@ -83,14 +83,14 @@ export class ReservationReceivedDetailComponent implements OnInit {
     let message_answer = this.form.getComponents().message_answer.getValue();
     let id_status = 2;
     let read_traveler = false;
-    
+
     let parent = this;
     this.ontimizeServiceUsers.update({ id_reservation: id_reservation }, { message_answer: message_answer, id_status: id_status, read_traveler: read_traveler }, 'reservation').subscribe(res => {
 
       this.dialog.closeAll();
 
       if (res.code == 0) {
-       
+
         parent.data.grid.reloadData();
         // Mostrar el snack-bar con el mensaje de éxito
         const config: OSnackBarConfig = {
@@ -105,7 +105,7 @@ export class ReservationReceivedDetailComponent implements OnInit {
         this.snackBarService.open(`Error: ${res.message}`, { milliseconds: 5000 });
       }
     });
-    
+
 
   }
 
@@ -141,7 +141,7 @@ export class ReservationReceivedDetailComponent implements OnInit {
     let id_status = 4;
     let read_traveler = false;
     let parent = this;
-    this.ontimizeServiceUsers.update({ id_reservation: id_reservation }, { message_cancellation: message_cancellation, id_status: id_status, read_traveler: read_traveler}, 'reservation').subscribe(res => {
+    this.ontimizeServiceUsers.update({ id_reservation: id_reservation }, { message_cancellation: message_cancellation, id_status: id_status, read_traveler: read_traveler }, 'reservation').subscribe(res => {
 
       this.dialog.closeAll();
 
@@ -160,14 +160,14 @@ export class ReservationReceivedDetailComponent implements OnInit {
         // Mostrar el snack-bar con el mensaje de error
         this.snackBarService.open(`Error: ${res.message}`, { milliseconds: 5000 });
       }
-    });  
+    });
   }
 
   deleteReservationFn(id_reservation) {
     console.log("boton borrar 345")
     let parent = this;
-    this.ontimizeServiceUsers.delete({id_reservation: id_reservation}, 'reservation').subscribe(res => {
-     
+    this.ontimizeServiceUsers.delete({ id_reservation: id_reservation }, 'reservation').subscribe(res => {
+
       this.dialog.closeAll();
 
       if (res.code == 0) {
@@ -185,10 +185,10 @@ export class ReservationReceivedDetailComponent implements OnInit {
         this.snackBarService.open(`Error: ${res.message}`, { milliseconds: 5000 });
       }
 
-    });    
+    });
   }
 
-  closeDialog(){
+  closeDialog() {
     this.dialog.closeAll()
   }
 }

@@ -5,7 +5,7 @@ import { OFormComponent, OSnackBarConfig, OntimizeService, SnackBarService } fro
 @Component({
   selector: 'app-travelers-reservation-received-detail',
   templateUrl: './travelers-reservation-received-detail.component.html',
-  styleUrls: ['./travelers-reservation-received-detail.component.css']
+  styleUrls: ['./travelers-reservation-received-detail.component.scss']
 })
 export class TravelersReservationReceivedDetailComponent implements OnInit {
 

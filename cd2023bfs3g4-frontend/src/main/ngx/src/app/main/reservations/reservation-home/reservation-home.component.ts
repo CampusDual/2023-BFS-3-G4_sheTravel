@@ -9,7 +9,7 @@ import { ProfileDialogComponent } from './profile-dialog/profile-dialog.componen
 @Component({
   selector: 'app-reservation-home',
   templateUrl: './reservation-home.component.html',
-  styleUrls: ['./reservation-home.component.css']
+  styleUrls: ['./reservation-home.component.scss']
 })
 export class ReservationHomeComponent implements OnInit {
 
@@ -21,7 +21,7 @@ export class ReservationHomeComponent implements OnInit {
   //nuevos  ViewChild
   @ViewChild('gridReservationReceived', { static: true }) gridReservationReceived: OGridComponent;
   @ViewChild('gridReservationSent', { static: true }) gridReservationSent: OGridComponent;
-  
+
   public numberOfMessagesNotReadInSent: number;
   public numberOfMessagesNotReadInReceiv: number;
   public numberOfTotalMessagesNotRead: number;
@@ -67,25 +67,25 @@ export class ReservationHomeComponent implements OnInit {
 
       });
 
-      this.ontimizeServiceUsers.query({}, ['message'], 'read_traveler_false').subscribe(
-        res => {
-          if (res.data && res.data.length) {
-            this.numberOfMessagesNotReadInSent = res.data.length;
-  
-          } else {
-            this.numberOfMessagesNotReadInSent = 0;
-          }
-          console.log(this.numberOfMessagesNotReadInSent);
-  
-          
-          this.numberOfTotalMessagesNotRead = this.numberOfMessagesNotReadInReceiv + this.numberOfMessagesNotReadInSent;
-          console.log(this.numberOfTotalMessagesNotRead);
-     
-        });
+    this.ontimizeServiceUsers.query({}, ['message'], 'read_traveler_false').subscribe(
+      res => {
+        if (res.data && res.data.length) {
+          this.numberOfMessagesNotReadInSent = res.data.length;
 
-        //-----------------fin cálculo del numero de mensajes sin leer en cada bandeja
+        } else {
+          this.numberOfMessagesNotReadInSent = 0;
+        }
+        console.log(this.numberOfMessagesNotReadInSent);
 
-       
+
+        this.numberOfTotalMessagesNotRead = this.numberOfMessagesNotReadInReceiv + this.numberOfMessagesNotReadInSent;
+        console.log(this.numberOfTotalMessagesNotRead);
+
+      });
+
+    //-----------------fin cálculo del numero de mensajes sin leer en cada bandeja
+
+
 
   }
 
@@ -189,41 +189,41 @@ export class ReservationHomeComponent implements OnInit {
         this.snackBarService.open(this.translate.get('SNACKACTIVITIES'), config);
       } else {
         // Mostrar el snack-bar con el mensaje de error
-          this.snackBarService.open(`Error: ${res.message}`, { milliseconds: 5000 });
+        this.snackBarService.open(`Error: ${res.message}`, { milliseconds: 5000 });
       }
     });
   }
 
   public verReservaSent(data: any): void {
 
-    let read_traveler = true;    
-    this.ontimizeServiceUsers.update({ id_reservation: data }, { read_traveler:read_traveler }, 'reservation').subscribe(res => {    
-        this.gridReservationSent.reloadData();
+    let read_traveler = true;
+    this.ontimizeServiceUsers.update({ id_reservation: data }, { read_traveler: read_traveler }, 'reservation').subscribe(res => {
+      this.gridReservationSent.reloadData();
     });
-     
-   
+
+
     this.dialog.open(ReservationSentDetailComponent, {
-      
+
       height: '750px',
       width: '550px',
       data: {
         id_reservation: data,
         //nuevo data del grid
         grid: this.gridReservationSent
-        
+
       }
     });
   }
 
-  public verReservaRec(data: any): void {    
-    let read_host = true;    
-    this.ontimizeServiceUsers.update({ id_reservation: data }, { read_host:read_host }, 'reservation').subscribe(res => {    
-        this.gridReservationReceived.reloadData();
+  public verReservaRec(data: any): void {
+    let read_host = true;
+    this.ontimizeServiceUsers.update({ id_reservation: data }, { read_host: read_host }, 'reservation').subscribe(res => {
+      this.gridReservationReceived.reloadData();
     });
-     
-   
+
+
     this.dialog.open(ReservationReceivedDetailComponent, {
-      
+
       height: '700px',
       width: '550px',
       data: {
@@ -231,22 +231,22 @@ export class ReservationHomeComponent implements OnInit {
         //nuevo
         grid: this.gridReservationReceived
       },
-    });  
+    });
   }
 
-    public verPerfil(id_client: any): void{
+  public verPerfil(id_client: any): void {
 
-      this.dialog.open(ProfileDialogComponent, {
-      
-        
-        width: '950px', /* Ancho fijo */
-        height: '680px', /* Altura fija */
-        data: {
-         id_client:id_client
-        
-        },
-      });  
-      
+    this.dialog.open(ProfileDialogComponent, {
+
+
+      width: '950px', /* Ancho fijo */
+      height: '680px', /* Altura fija */
+      data: {
+        id_client: id_client
+
+      },
+    });
+
   };
 
 
